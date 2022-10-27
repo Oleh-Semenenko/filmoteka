@@ -1,2 +1,20 @@
 @import './common';
-@import './example';
+@import './base/reset';
+
+@import './utilits/hidden';
+@import './utilits/mixins';
+@import './utilits/vars';
+
+@import './components/button';
+@import './components/card';
+@import './components/modal';
+
+@import './layout/header';
+@import './layout/gallery';
+@import './layout/pages';
+@import './layout/footer';
+@import './layout/library';
+
+
+
+
