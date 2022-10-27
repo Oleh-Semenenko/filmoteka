@@ -32,6 +32,16 @@ class Movies {
     return response.data;
   }
 
+  incrementPage() {
+    const { page } = this.options.params;
+    page += 1;
+  }
+
+  decrementPage() {
+    const { page } = this.options.params;
+    page -= 1;
+  }
+
   getReleaseYear(date) {
     return date.split('-').slice(0, 1).join('');
   }
