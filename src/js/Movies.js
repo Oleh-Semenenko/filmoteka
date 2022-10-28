@@ -69,7 +69,7 @@ class Movies {
         const releaseYear = this.getReleaseYear(release_date);
         const genres = this.getGenres(genre_ids, genresOfMovies).join(', ');
         return `
-      <div>
+      <li>
   <a href="">
   <img src="https://image.tmdb.org/t/p/w342${poster_path}" alt="Poster movie "${original_title}"  />
     <div>
@@ -78,7 +78,7 @@ class Movies {
       <p>${releaseYear}</p>
     </div>
   </a>
-</div>`;
+</li>`;
       })
       .join('');
   }

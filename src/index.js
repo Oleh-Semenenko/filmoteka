@@ -1,5 +1,5 @@
 import { refs } from './js/refs';
-// import renderMarkupStatrMoviesList from './js/renderMarkupStatrMoviesList';
+// import renderMarkupStartMoviesList from './js/renderMarkupStartMoviesList';
 // import genresOfMovies from './data/genresOfMovies.json';
 
-// renderMarkupStatrMoviesList(genresOfMovies);
+// renderMarkupStartMoviesList(genresOfMovies);
