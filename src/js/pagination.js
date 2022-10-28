@@ -1,5 +1,7 @@
 import Pagination from 'tui-pagination';
+import Movies from './Movies';
 import { refs } from './refs';
+// import '../css/pagination.scss'
 
 const options = {
   totalItems: 100,
@@ -11,7 +13,7 @@ const options = {
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<button class="button test" type="button">{{page}}</button>',
+    page: '<button class="button " type="button">{{page}}</button>',
     currentPage:
       '<button class="button" type="button"><strong class="tui-page-btn tui-is-selected">{{page}}</strong></button>',
     moveButton:
@@ -29,9 +31,13 @@ const options = {
 };
 
 const pagination = new Pagination('tui-pagination-container', options);
-pagination.getCurrentPage();
+// pagination.getCurrentPage();
 
 //--------------------FETCH--------------------------------------------------
+//clicking on pagination
+pagination.on('beforeMove', event => {
+  fetchData(event.page);
+});
 
 const BASE_URL = 'https://api.themoviedb.org';
 
@@ -40,15 +46,15 @@ async function fetchData(page) {
     api_key: 'f23afa13cf10e0a13fa8c4a5195ece8b',
     media_type: 'movie',
     page: page,
-    // query: inputValue,
   });
 
-  const response = await fetch(`${BASE_URL}/3/trending/movie/day?${params}`);
-  const data = await response.json();
-  console.log(data.results[0].title);
-  return data;
-}
+  const trendingMovies = new Movies({
+    url: `${BASE_URL}/3/trending/movie/day?${params}`,
+    params: params,
+  });
+  const data = await trendingMovies.fetchMovies();
 
-pagination.on('beforeMove', event => {
-  fetchData(event.page);
-});
+  const markup = trendingMovies.renderMovieCard(data.results);
+  const tuiPag = document.querySelector('.tui-pagination');
+  tuiPag.insertAdjacentHTML('afterbegin', markup);
+}
