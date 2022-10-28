@@ -2,7 +2,7 @@ import Movies from './Movies';
 import { refs } from './refs';
 
 const trendingMovies = new Movies({
-  url: 'https:api.themoviedb.org/3/trending/movie/week',
+  url: 'https://api.themoviedb.org/3/trending/movie/week',
   params: { api_key: '084c550b6f1767443109bcf4bcaee21b', page: 1 },
 });
 
