@@ -1,20 +1,23 @@
 .container {
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
 
-    @include mobile {
-        max-width: 480px;
-    }
+  @include mobile {
+    max-width: 320px;
+  }
 
-    @include tablet {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
+  @include tablet {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
-    @include desktop {
-        max-width: 1280px;
-    }
+  @include desktop {
+    max-width: 1280px;
+
+    padding-right: 32px;
+    padding-left: 32px;
+  }
 }
