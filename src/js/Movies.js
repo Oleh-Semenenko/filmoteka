@@ -81,7 +81,7 @@ class Movies {
         return `
       <li>
   <a href="">
-  <img src="https://image.tmdb.org/t/p/w342${poster_path}" alt="Poster movie ${original_title}" width="100px" />
+  <img src="https://image.tmdb.org/t/p/w342${poster_path}" alt="Poster movie ${original_title}"/>
     <div>
       <h2>${original_title}</h2>
       <p>${genres}</p>
