@@ -1,3 +1,4 @@
 export const refs = {
-  movieList: document.querySelector('.movie__list'),
+  moviesList: document.querySelector('main'),
+  form: document.querySelector('#search-form'),
 };

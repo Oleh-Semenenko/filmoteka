@@ -11,7 +11,7 @@ async function renderMarkupStartMoviesList(genresOfMovies) {
     const dataMovies = await trendingMovies.fetchMovies();
     const movies = dataMovies.results;
 
-    refs.movieList.innerHTML = trendingMovies.renderMovieCard(movies);
+    refs.moviesList.innerHTML = trendingMovies.renderMovieCard(movies);
   } catch (error) {
     console.log(error.message);
   }
