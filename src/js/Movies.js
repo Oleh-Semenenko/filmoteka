@@ -71,11 +71,13 @@ class Movies {
         return `
       <li class="movie__item">
   <a class="movie__link" href="">
-  <img src="https://image.tmdb.org/t/p/w342${poster_path}" alt="Poster movie "${original_title}"  width="" height="" />
-    <div class="movie__text-box">
-      <h2 class="movie__title">${original_title}</h2>
-      <p class="movie__genres">${genres}</p>
-      <p class="movie__release">${releaseYear}</p>
+  <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" alt="Poster movie "${original_title}"  width="" height="" />
+    <div class="movie__description">
+      <p class="movie__title">${original_title}</p>
+      <p class="movie__info">${genres}  
+      <span class="movie__breacker"> | </span>
+    <span class="movie__year">${releaseYear}</span></p>
+      
     </div>
   </a>
 </li>`;

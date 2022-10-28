@@ -1,7 +1,7 @@
 body {
-    font-family: 'Roboto';
-    font-size: 12px;
-    font-weight: 500;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 500;
 }
 
 h1,
@@ -10,27 +10,31 @@ h3,
 h4,
 h5,
 h6 {
-    font-size: 20px;
-    line-height: 1.33;
+  font-size: 20px;
+  line-height: 1.33;
 }
 
 ul,
 ol {
-    padding-left: 0;
-    list-style: none;
+  padding-left: 0;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
-    display: block;
+  text-decoration: none;
+  display: block;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 img {
-    display: block;
-    height: auto;
-    width: 100%;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
