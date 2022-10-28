@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 
 const moviesByKeyword = new Movies({
-  url: 'https:api.themoviedb.org/3/search/movie',
+  url: 'https://api.themoviedb.org/3/search/movie',
   params: {
     api_key: '084c550b6f1767443109bcf4bcaee21b',
     page: 1,
