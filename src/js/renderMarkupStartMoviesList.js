@@ -1,7 +1,5 @@
 import Movies from './Movies';
-
-// const moviesListEl = document.querySelector('main');
-//потрібно перенести у refs
+import { refs } from './refs';
 
 const trendingMovies = new Movies({
   url: 'https:api.themoviedb.org/3/trending/movie/week',
@@ -13,10 +11,10 @@ async function renderMarkupStartMoviesList(genresOfMovies) {
     const dataMovies = await trendingMovies.fetchMovies();
     const movies = dataMovies.results;
 
-    moviesListEl.innerHTML = trendingMovies.renderMovieCard(movies);
+    refs.moviesList.innerHTML = trendingMovies.renderMovieCard(movies);
   } catch (error) {
     console.log(error.message);
   }
 }
 
-// export default renderMarkupStartMoviesList;
+export default renderMarkupStartMoviesList;

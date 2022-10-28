@@ -2,13 +2,14 @@ import axios from 'axios';
 import genresOfMovies from '../data/genresOfMovies.json';
 
 class Movies {
-  constructor({ url, params: { api_key, page } }) {
+  constructor({ url, params: { api_key, page, query } }) {
     this.url = url;
     this.options = {
       params: {
         api_key,
         language: 'en-US',
         page,
+        query,
         include_adult: false,
       },
     };
@@ -27,9 +28,18 @@ class Movies {
   }
 
   async fetchMovies() {
-    const response = await axios.get(this.url, this.options);
+    const { data } = await axios.get(this.url, this.options);
 
-    return response.data;
+    return data;
+  }
+
+  get query() {
+    const { query } = this.options.params;
+    return query;
+  }
+
+  set query(newQuery) {
+    this.options.params.query = newQuery;
   }
 
   incrementPage() {
@@ -71,7 +81,7 @@ class Movies {
         return `
       <li>
   <a href="">
-  <img src="https://image.tmdb.org/t/p/w342${poster_path}" alt="Poster movie "${original_title}"  />
+  <img src="https://image.tmdb.org/t/p/w342${poster_path}" alt="Poster movie ${original_title}" width="100px" />
     <div>
       <h2>${original_title}</h2>
       <p>${genres}</p>
