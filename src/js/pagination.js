@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import Movies from './Movies';
+import renderMarkupStartMoviesList from './renderMarkupStartMoviesList';
 import { refs } from './refs';
 
 const options = {
@@ -44,6 +45,8 @@ const localStorageCurrentPage = localStorage.getItem(LOCALSTORAGE_KEY);
 
 if (localStorageCurrentPage) {
   pagination.movePageTo(localStorageCurrentPage);
+} else {
+  renderMarkupStartMoviesList();
 }
 
 async function fetchData(page) {

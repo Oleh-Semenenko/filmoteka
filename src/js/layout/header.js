@@ -1,10 +1,19 @@
 import { refs } from '../refs';
 
-const { headerNav, headerBtn, libraryBtn, queueBtn, watchedBtn, header, headerSearcherEl, homeBtn, } = refs;
+const {
+  headerNav,
+  headerBtn,
+  libraryBtn,
+  queueBtn,
+  watchedBtn,
+  header,
+  headerSearcherEl,
+  homeBtn,
+} = refs;
 
 headerNav.addEventListener('click', changeHeader);
 headerBtn.addEventListener('click', changeActiveHeaderBtn);
-libraryBtn.addEventListener('click', renderFromStorageArray('queue'));
+// libraryBtn.addEventListener('click', renderFromStorageArray('queue'));
 
 function changeHeader(e) {
   switch (e.target.dataset.action) {
