@@ -1,4 +1,6 @@
 export const refs = {
+  spinner: document.querySelector('.js-spinner'),
+  load: document.querySelector('[data-load]'),
   headerSearcherEl: document.querySelector('.header__searcher'),
   searchFormEl: document.querySelector('.header__form'),
   homeBtn: document.querySelector(['[data-action="home"]']),
@@ -10,4 +12,3 @@ export const refs = {
   queueBtn: document.querySelector('[data-action="queue"]'),
   moviesList: document.querySelector('.movie__list'),
 }
-
