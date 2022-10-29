@@ -1,5 +1,4 @@
-@include mobile {
-  .footer-box {
+.footer-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,83 +8,91 @@
     line-height: 1.14;
     color: #545454;
     background-color: #f7f7f7;
-  }
-  .top-box,
-  .bottom-box {
-    display: flex;
-  }
-  .top-box {
-    margin-bottom: 10px;
-  }
+}
 
-  .top-box__sumb {
+.top-box,
+.bottom-box {
+    display: flex;
+}
+
+.top-box {
+    margin-bottom: 10px;
+}
+
+.top-box__sumb {
     margin: 0;
     font-size: 14px;
     line-height: 1.14;
     color: #545454;
-  }
-  .top-box__text {
+}
+
+.top-box__text {
     margin: 0;
     padding-right: 5px;
     padding-left: 5px;
     border-right: 1px solid #545454;
-  }
-  .bottom-box {
+}
+
+.bottom-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .bottom-box__text {
+}
+
+.bottom-box__text {
     margin: 0;
-  }
-  .bottom-box__text:not(:last-child) {
+}
+
+.bottom-box__text:not(:last-child) {
     margin-bottom: 10px;
-  }
-  .bottom-box__svg {
+}
+
+.bottom-box__svg {
     margin-right: 5px;
     margin-left: 5px;
-  }
-  .bottom-box__link {
+}
+
+.bottom-box__link {
     display: inline;
     text-decoration: underline;
     cursor: pointer;
     color: #545454;
-  }
 }
+
+
 @include tablet {
-  .footer-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    font-size: 16px;
-    line-height: 1.19;
-  }
-  .top-box {
-    margin-bottom: 0;
-  }
-  .top-box__sumb {
-    font-size: 16px;
-    line-height: 1.19;
-    color: #545454;
-  }
-  .bottom-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .bottom-box__text {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .bottom-box__text:not(:last-child) {
-    margin-bottom: 0;
-    border-right: 1px solid #545454;
-  }
-  .bottom-box__link {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    cursor: pointer;
-  }
+    .footer-box {
+        flex-direction: row;
+        justify-content: center;
+        font-size: 16px;
+        line-height: 1.19;
+    }
+
+    .top-box {
+        margin-bottom: 0;
+    }
+
+    .top-box__sumb {
+        font-size: 16px;
+        line-height: 1.19;
+    }
+
+    .bottom-box {
+        flex-direction: row;
+    }
+
+    .bottom-box__text {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .bottom-box__text:not(:last-child) {
+        margin-bottom: 0;
+        border-right: 1px solid #545454;
+    }
+
+    .bottom-box__link {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 }
