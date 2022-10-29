@@ -4,8 +4,8 @@ import { refs } from './refs';
 
 const options = {
   totalItems: 100,
-  itemsPerPage: 10,
-  visiblePages: 4,
+  itemsPerPage: 20,
+  visiblePages: 5,
   page: 1,
   centerAlign: false,
 
@@ -17,7 +17,7 @@ const options = {
       '<button class="button selected" type="button"><strong class="tui-page-btn tui-is-selected">{{page}}</strong></button>',
     moveButton:
       '<button class="button pagination-{{type}}" type="button">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span></button>',
+      '<svg width="16" height="16"><use href="./images/symbol-defs.svg#icon-arrow-left"></use></svg>',
     disabledMoveButton:
       '<button class="button pagination-{{type}}" type="button">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -38,6 +38,13 @@ pagination.on('beforeMove', event => {
 });
 
 const BASE_URL = 'https://api.themoviedb.org';
+const LOCALSTORAGE_KEY = 'current-page';
+
+const localStorageCurrentPage = localStorage.getItem(LOCALSTORAGE_KEY);
+
+if (localStorageCurrentPage) {
+  pagination.movePageTo(localStorageCurrentPage);
+}
 
 async function fetchData(page) {
   const params = new URLSearchParams({
@@ -47,7 +54,7 @@ async function fetchData(page) {
   });
 
   const trendingMovies = new Movies({
-    url: `${BASE_URL}/3/trending/movie/day?${params}`,
+    url: `${BASE_URL}/3/trending/movie/week?${params}`,
     params: params,
   });
 
@@ -55,4 +62,6 @@ async function fetchData(page) {
 
   const markup = trendingMovies.renderMovieCard(data.results);
   refs.moviesList.innerHTML = markup;
+
+  localStorage.setItem(LOCALSTORAGE_KEY, page);
 }
