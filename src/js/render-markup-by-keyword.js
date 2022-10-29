@@ -10,7 +10,7 @@ const moviesByKeyword = new Movies({
   },
 });
 
-refs.form.addEventListener('submit', handleSubmit);
+refs.searchFormEl.addEventListener('submit', handleSubmit);
 
 async function handleSubmit(e) {
   e.preventDefault();
