@@ -33,13 +33,11 @@ class Movies {
   }
 
   incrementPage() {
-    const { page } = this.options.params;
-    page += 1;
+    this.options.params.page += 1;
   }
 
   decrementPage() {
-    const { page } = this.options.params;
-    page -= 1;
+    this.options.params.page -= 1;
   }
 
   getReleaseYear(date) {
