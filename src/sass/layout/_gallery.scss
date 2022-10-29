@@ -10,7 +10,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: 0 5px 10px black;
+    box-shadow: 0 5px 10px var(--primary-text-color);
   }
 }
 
@@ -33,7 +33,7 @@
   margin-top: 8px;
   font-size: 12px;
   line-height: 16px;
-  color: #000000;
+  color: var(--primary-text-color);
   padding: 5px;
 }
 
@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #ff6b08;
+  color: var(--accent-color);
 }
 
 @include tablet {
@@ -70,12 +70,12 @@
     margin-top: 32px;
     margin-left: 32px;
 
-    // &:hover,
-    // &:focus {
-    //   transition-property: transform;
-    //   transform: scale(1.1);
-    //   transition-duration: 500ms;
-    // }
+    &:hover,
+    &:focus {
+      transition-property: transform;
+      transform: scale(1.07);
+      transition-duration: 500ms;
+    }
   }
 
   .movie__item:not(:last-child) {
@@ -114,5 +114,15 @@
     font-size: 20px;
     line-height: 24px;
     margin-top: 12px;
+  }
+}
+.default-height {
+  min-height: calc(100vh - 388px);
+  @include tablet {
+    min-height: calc(100vh - 298px);
+  }
+
+  @include desktop {
+    min-height: calc(100vh - 293px);
   }
 }
