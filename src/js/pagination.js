@@ -1,26 +1,25 @@
 import Pagination from 'tui-pagination';
 import Movies from './Movies';
 import { refs } from './refs';
-// import '../css/pagination.scss'
 
 const options = {
   totalItems: 100,
   itemsPerPage: 10,
-  visiblePages: 5,
+  visiblePages: 4,
   page: 1,
   centerAlign: false,
 
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
-    page: '<button class="button " type="button">{{page}}</button>',
+    page: '<button class="button" type="button">{{page}}</button>',
     currentPage:
-      '<button class="button" type="button"><strong class="tui-page-btn tui-is-selected">{{page}}</strong></button>',
+      '<button class="button selected" type="button"><strong class="tui-page-btn tui-is-selected">{{page}}</strong></button>',
     moveButton:
-      '<button class="button" type="button">' +
+      '<button class="button pagination-{{type}}" type="button">' +
       '<span class="tui-ico-{{type}}">{{type}}</span></button>',
     disabledMoveButton:
-      '<button class="button" type="button">' +
+      '<button class="button pagination-{{type}}" type="button">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
       '</button>',
     moreButton:
@@ -31,12 +30,11 @@ const options = {
 };
 
 const pagination = new Pagination('tui-pagination-container', options);
-// pagination.getCurrentPage();
 
-//--------------------FETCH--------------------------------------------------
-//clicking on pagination
+// click on pagination
 pagination.on('beforeMove', event => {
-  fetchData(event.page);
+  const currentPage = event.page;
+  fetchData(currentPage);
 });
 
 const BASE_URL = 'https://api.themoviedb.org';
@@ -52,9 +50,9 @@ async function fetchData(page) {
     url: `${BASE_URL}/3/trending/movie/day?${params}`,
     params: params,
   });
+
   const data = await trendingMovies.fetchMovies();
 
   const markup = trendingMovies.renderMovieCard(data.results);
-  const tuiPag = document.querySelector('.tui-pagination');
-  tuiPag.insertAdjacentHTML('afterbegin', markup);
+  refs.moviesList.innerHTML = markup;
 }
