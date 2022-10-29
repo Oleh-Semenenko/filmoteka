@@ -116,3 +116,13 @@
     margin-top: 12px;
   }
 }
+.default-height {
+  min-height: calc(100vh - 388px);
+  @include tablet {
+    min-height: calc(100vh - 298px);
+  }
+
+  @include desktop {
+    min-height: calc(100vh - 293px);
+  }
+}
