@@ -1,6 +1,4 @@
-import { refs } from "./js/refs";
+import { refs } from './js/refs';
 
-//=========layout=================
-import './js/refs.js';
 //header
 import './js/layout/header';

@@ -162,12 +162,12 @@ display: flex;
     max-width: 394px;
 }
 }
-&__form-search__icon {
+&__search__icon {
     stroke: #fff;
     transition: stroke .25s cubic-bezier(.4, 0, .2, 1);
 }
 
-&__form-input-btn {
+&__input-btn {
     border: none;
     background-color: inherit;
     transform: translateX(-100%);

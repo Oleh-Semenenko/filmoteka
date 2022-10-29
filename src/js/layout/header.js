@@ -1,22 +1,13 @@
 import { refs } from '../refs';
 
-const {
-  headerNav,
-  headerBtn,
-  libraryBtn,
-  queueBtn,
-  watchedBtn,
-  header,
-  headerSearcherEl,
-  homeBtn,
-} = refs;
+const { headerNav, headerBtn, libraryBtn, queueBtn, watchedBtn, header, headerSearcherEl, homeBtn, } = refs;
 
 headerNav.addEventListener('click', changeHeader);
 headerBtn.addEventListener('click', changeActiveHeaderBtn);
 libraryBtn.addEventListener('click', renderFromStorageArray('queue'));
 
 function changeHeader(e) {
-  switch (e.srcElement.dataset.action) {
+  switch (e.target.dataset.action) {
     case 'library':
       choseActiveEl(queueBtn, watchedBtn, 'header__item-btn--active');
       selectLibraryBtn();
