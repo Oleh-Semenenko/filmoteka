@@ -12,4 +12,6 @@ export const refs = {
   queueBtn: document.querySelector('[data-action="queue"]'),
   moviesList: document.querySelector('.movie__list'),
   movieCard: document.querySelector('.movie__item'),
+
+  modal: document.querySelector('.modal__container'),
 }

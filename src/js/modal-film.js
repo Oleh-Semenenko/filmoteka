@@ -162,6 +162,8 @@ export default function makeFilmModalMarkup(
          ${btn_search}
           </div>
         </div>`;
+  
+  
   }
   
 //   //Функція закриття по кнопці
