@@ -48,6 +48,14 @@
   gap: 5px;
   color: var(--accent-color);
 }
+.movie__rating {
+  font-size: 12px;
+  line-height: 14px;
+  padding: 1px 6px;
+  background: #ff6b01;
+  border-radius: 5px;
+  color: white;
+}
 
 @include tablet {
   .movie {
