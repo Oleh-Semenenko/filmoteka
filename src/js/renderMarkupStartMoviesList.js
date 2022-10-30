@@ -17,4 +17,6 @@ async function renderMarkupStartMoviesList(genresOfMovies) {
   }
 }
 
+
+
 export default renderMarkupStartMoviesList;
