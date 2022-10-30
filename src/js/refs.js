@@ -13,5 +13,5 @@ export const refs = {
   moviesList: document.querySelector('.movie__list'),
   movieCard: document.querySelector('.movie__item'),
 
-  modal: document.querySelector('.modal__container'),
+  modalEl: document.querySelector('.modal__container'),
 }

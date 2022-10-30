@@ -10,9 +10,7 @@ const trendingMovies = new Movies({
 async function renderMarkupStartMoviesList(genresOfMovies) {
   try {
     const dataMovies = await trendingMovies.fetchMovies();
-    console.log(dataMovies);
     const movies = dataMovies.results;
-    console.log(movies);
 
     refs.moviesList.innerHTML = trendingMovies.renderMovieCard(movies);
   } catch (error) {
