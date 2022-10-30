@@ -1,0 +1,33 @@
+.button {
+    border: none;
+    background-color: var(--header-text-color);
+
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.33;
+
+    padding-right: 16px;
+        padding-left: 16px;
+    }
+
+.selected {
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    color: var(--header-text-color);
+}
+
+.arrows {
+    background-color: var(--secondary-background-color);
+}
+
+.tui-pagination {
+display: flex;
+    justify-content: center;
+}
+
+.pagination-next, .pagination-prev {
+    display: none;
+}
+
