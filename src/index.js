@@ -4,6 +4,7 @@ import renderMarkupByKeywordMoviesList from './js/render-markup-by-keyword';
 import genresOfMovies from './data/genresOfMovies.json';
 import makeFilmModalMarkup from './js/modal-film';
 import './js/pagination';
+import './js/button-up';
 
 
 // Для тестирования модалки -> раскомментировать код ниже -> снять класс is-hidden с backdrop в паршеле modal-film.html
