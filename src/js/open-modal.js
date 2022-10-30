@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import GetPrimoryInfoMovie from './API-GET-DETALS-MOVIE';
 import openModalOnClick from './metodsBasicklightbox';
 import { refs } from './refs.js';
@@ -12,8 +13,8 @@ async function openModal(e) {
 
   const data = await getMovieInfo.fetchMovie(id);
   try {
-    console.log(data);
     openModalOnClick(data);
-  } catch (error) {}
-  //   console.log(data);
+  } catch (error) {
+    return Notify.failure(error.message);
+  }
 }
