@@ -113,15 +113,15 @@ export default function makeFilmModalMarkup(
     btn_search
     ) {
     return `
-    <div class="film__image">${poster_path !== null
+    <div class="film__image">${
+      poster_path !== null
         ? `<img class="image" src="${poster_path}" alt=${title}/>`
         : ''
-    }}
+    }
       </div>
       <div class="film__information">
-        <div>
           <h2 class="film__title">${title}</h2>
-          <ul>
+          <ul class="film__list">
             <li class="film__item">
               <p class="film__details">Vote / Votes</p>
               <p class="film__info--uper">
@@ -147,16 +147,15 @@ export default function makeFilmModalMarkup(
               }
             </li>
           </ul>
-        </div>
-        <div>
-          <h3 class="film__about__title">About</h3>
+        <div class="film__about">
+          <h3 class="film__about-title">About</h3>
           ${
             overview
-              ? `<p class="film__about__text">${overview}</p>`
-              : `<p class="film__about__text">No information</p>`
+              ? `<p class="film__about-text">${overview}</p>`
+              : `<p class="film__about-text">No information</p>`
           }
         </div>
-        <div class="film__button__wrapper">
+        <div class="button-wrapper">
           <button type="button" class="film__button btn__watch btn__watch__remove">Add to watched</button>
           <button type="button" class="film__button btn__queue btn__queue__remove">Add to queue</button>
          ${btn_search}

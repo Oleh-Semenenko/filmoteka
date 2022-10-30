@@ -19,16 +19,19 @@ import makeFilmModalMarkup from './js/modal-film';
 //   )
 // );
 
-refs.modalEl.insertAdjacentHTML('beforeend', makeFilmModalMarkup(
-  '3zXceNTtyj5FLjwQXuPvLYK5YYL.jpg',
-  'Black Adam',
-  7.077,
-  602,
-  3835.264,
-  [28, 878, 14],
-  "Nearly 5,000 years after he was bestowed with the almighty powers",
-  1
-));
+refs.modalEl.insertAdjacentHTML(
+  'beforeend',
+  makeFilmModalMarkup(
+    '3zXceNTtyj5FLjwQXuPvLYK5YYL.jpg',
+    'Black Adam',
+    7.077,
+    602,
+    3835.264,
+    [28, 878, 14],
+    'Nearly 5,000 years after he was bestowed with the almighty powers Nearly 5,000 years after he was bestowed with the almighty powers Nearly 5,000 years after he was bestowed with the almighty powers Nearly 5,000 years after he was bestowed with the almighty powers Nearly 5,000 years after he was bestowed with the almighty powers Nearly 5,000 years after he was bestowed with the ',
+    1
+  )
+);
 
 
 

@@ -1,8 +1,4 @@
 .backdrop {
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
-
     width: 100%;
     height: 100%;
     position: fixed;
@@ -13,16 +9,14 @@
 
 
 .modal__container {
-    overflow-x: auto;
-
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    min-width: 280px;
-    width: 90%;
+    // min-width: 280px;
+    max-width: 480px;
     max-height: 940px;
     height: 90%;
     
@@ -36,18 +30,22 @@
     // max-height: 100vh;
     padding: 48px 20px 40px 20px;
 
-    @media screen and (min-width: 768px) and (max-width: 1023px) {
+    @include tablet {
         display: flex;
-        margin: auto;
-        width: 704px;
-        padding: 40px 36px 40px 36px;
+        gap: 68px;
+        align-items: stretch;
+        // margin: auto;
+        max-height: 552px;
+        max-width: 704px;
+        padding: 40px 72px 40px 36px;
     }
 
-    @media screen and (min-width: 1024px) {
+    @include desktop {
         display: flex;
-        min-width: 806px;
-        height: 558px;
-        padding: 40px 12px 40px 12px;
+        gap: 16px;
+        max-width: 806px;
+        max-height: 558px;
+        padding: 40px 12px;
     }
     .backdrop.is-hidden & {
         transform: translate(-50%, -50%) scale(0.8);
@@ -55,19 +53,22 @@
 }
 
 .image {
-    display: block;
-    max-width: 240px;
-    // height: 356px;
+    background-image: url(/src/images/poster.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
     border-radius: 5px;
     box-shadow: 5px -3px 15px 1px #645c5cbf;
 
-    @media screen and (min-width: 768px) and (max-width: 1023px) {
-        max-width: 264px;
-        height: 373.55px;
+    @include tablet {
+        width: 264px;
+        height: 373px;
     }
 
-    @media screen and (min-width: 1024px) {
-        max-width: 375px;
+    @include desktop {
+        width: 375px;
         height: 478px;
     }
 }
@@ -75,55 +76,71 @@
 .film__image {
     margin-right: auto;
     margin-left: auto;
-    max-width: 240px;
+    width: 240px;
     height: 356px;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     // background-color: var(--img-background-color);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
 
     // background-image: url(../images/placeholder/modal/no-image_modal_mobile.jpg);
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
         margin-bottom: 0;
         margin-left: 0;
-        margin-right: 30px;
-        max-width: 264px;
+        width: 264px;
         height: 373.55px;
         // background-image: url(../images/placeholder/modal/no-image_modal_tablet.jpg);
     }
 
-    @media screen and (min-width: 1024px) {
-        max-width: 396px;
+    @include desktop {
+        width: 396px;
         height: 477.8px;
         // background-image: url(../images/placeholder/modal/no-image_modal_desktop.jpg);
     }
 }
 
 .film__information {
-    text-align: start;
+    text-align: center;
+    @include tablet {
+        text-align: start;
+    }
 }
 
 .film__title {
     font-size: 20px;
     line-height: 1.15;
+    margin-top: 0;
     margin-bottom: 20px;
 
-    @media screen and (min-width: 1024px) {
+    @include desktop {
         font-size: 30px;
         line-height: 1.17;
     }
 }
 
+.film__list {
+    margin: 0;
+    margin-bottom: 20px;
+    display: inline-block;
+    text-align: center;
+    @include tablet {
+        display: block;
+        text-align: start;
+    }
+}
+
 .film__item {
     display: flex;
-    margin-bottom: 10px;
+    &:not(:last-child) {
+        margin-bottom: 8px;
+    }
 }
 
 .film__details {
-    color: second-text-color;
+    color: var(--quality-text-color);
     min-width: 108px;
 }
 
@@ -142,22 +159,29 @@
 
 .film__rating--divider {
     margin-right: 3px;
+    color: var(--quality-text-color);
 }
 
-.film__about__title {
+.film__about-title {
     text-transform: uppercase;
-    margin-top: 10px;
+    margin: 0;
     margin-bottom: 10px;
 }
 
-.film__about__text {
+.film__about-text {
+    overflow-y: auto;
     line-height: 1.67;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
+    max-height: 236px;
+
+    @include desktop {
+        max-height: 160px;
+    }
 }
 
-.film__button__wrapper {
+.button-wrapper {
     display: flex;
-    margin-bottom: 16px;
+    justify-content: center;
 }
 
 .film__button {
@@ -177,11 +201,11 @@
         border: 1px solid #ff6b08;
     }
 
-    @media screen and (min-width: 768px) and (max-width: 1023px) {
+    @include tablet {
         width: 125px;
     }
 
-    @media screen and (min-width: 1024px) {
+    @include desktop {
         width: 136px;
     }
 }
