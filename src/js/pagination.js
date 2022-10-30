@@ -3,6 +3,7 @@ import Movies from './Movies';
 import renderMarkupStartMoviesList from './renderMarkupStartMoviesList';
 import { refs } from './refs';
 
+
 const options = {
   totalItems: 100,
   itemsPerPage: 20,

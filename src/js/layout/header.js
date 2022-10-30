@@ -1,6 +1,7 @@
 import { refs } from '../refs';
 
-const { headerBtn, queueBtn, watchedBtn, } = refs;
+const { headerBtn, queueBtn, watchedBtn } = refs;
+
 
 headerBtn.addEventListener('click', changeActiveHeaderBtn);
 
