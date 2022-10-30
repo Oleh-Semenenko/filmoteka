@@ -4,7 +4,7 @@ import { refs } from './refs.js';
 
 const getMovieInfo = new GetPrimoryInfoMovie();
 
-refs.gallery.addEventListener('click', openModal);
+refs.moviesList.addEventListener('click', openModal);
 
 async function openModal(e) {
   e.preventDefault();
