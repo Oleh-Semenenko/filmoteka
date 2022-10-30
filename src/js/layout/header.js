@@ -4,7 +4,7 @@ const { headerNav, headerBtn, libraryBtn, queueBtn, watchedBtn, header, headerSe
 
 headerNav.addEventListener('click', changeHeader);
 headerBtn.addEventListener('click', changeActiveHeaderBtn);
-libraryBtn.addEventListener('click', renderFromStorageArray('queue'));
+// libraryBtn.addEventListener('click', renderFromStorageArray('queue'));
 
 function changeHeader(e) {
   switch (e.target.dataset.action) {

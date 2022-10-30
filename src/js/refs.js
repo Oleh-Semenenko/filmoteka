@@ -11,4 +11,5 @@ export const refs = {
   watchedBtn: document.querySelector('[data-action="watched"]'),
   queueBtn: document.querySelector('[data-action="queue"]'),
   moviesList: document.querySelector('.movie__list'),
+  movieCard: document.querySelector('.movie__item'),
 }

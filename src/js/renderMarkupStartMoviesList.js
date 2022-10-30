@@ -1,5 +1,6 @@
 import Movies from './Movies';
 import { refs } from './refs';
+import genresOfMovies from '../data/genresOfMovies.json';
 
 const trendingMovies = new Movies({
   url: 'https://api.themoviedb.org/3/trending/movie/week',
@@ -9,12 +10,16 @@ const trendingMovies = new Movies({
 async function renderMarkupStartMoviesList(genresOfMovies) {
   try {
     const dataMovies = await trendingMovies.fetchMovies();
+    console.log(dataMovies);
     const movies = dataMovies.results;
+    console.log(movies);
 
     refs.moviesList.innerHTML = trendingMovies.renderMovieCard(movies);
   } catch (error) {
     console.log(error.message);
   }
 }
+
+renderMarkupStartMoviesList(genresOfMovies);
 
 export default renderMarkupStartMoviesList;
