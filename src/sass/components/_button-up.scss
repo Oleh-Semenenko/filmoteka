@@ -1,0 +1,9 @@
+#back-to-top {
+    width: 55px;
+    height: 55px;
+}
+
+#back-to-top:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 43px rgba(255, 107, 1, .6);
+}
