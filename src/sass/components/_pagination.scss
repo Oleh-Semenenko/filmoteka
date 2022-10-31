@@ -1,19 +1,20 @@
 .button {
-    border: none;
-    background-color: var(--header-text-color);
+        border: none;
+        background-color: inherit;
 
         font-weight: 500;
         font-size: 12px;
         line-height: 1.33;
 
-    padding-right: 16px;
+        padding-right: 16px;
         padding-left: 16px;
+        margin-top: 60px;
+        margin-bottom: 60px;
     }
 
 .selected {
     background-color: var(--accent-color);
     border-radius: 5px;
-    width: 40px;
     height: 40px;
     color: var(--header-text-color);
 }
@@ -23,11 +24,19 @@
 }
 
 .tui-pagination {
-display: flex;
-    justify-content: center;
+  text-align: center;
 }
 
-.pagination-next, .pagination-prev {
-    display: none;
+.pagination-first, .pagination-last {
+    // display: none;
+    background-color: var(--secondary-background-color);
+    border-radius: 5px;
+    height: 40px;
 }
 
+
+
+// .pagination-prev,
+// .pagination-next {
+//     display: none;
+// }
