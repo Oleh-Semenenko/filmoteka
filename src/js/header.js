@@ -1,4 +1,4 @@
-import { refs } from '../refs';
+import { refs } from './refs';
 
 const { headerBtn, queueBtn, watchedBtn } = refs;
 

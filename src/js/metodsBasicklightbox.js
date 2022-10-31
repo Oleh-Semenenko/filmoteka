@@ -1,6 +1,7 @@
 const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
-import makeFilmModalMarkup from './modal-film';
+import { refs } from "./refs";
+
 
 const btn = document.querySelector('.template');
 
@@ -27,7 +28,7 @@ export default async function openModalOnClick(data) {
             </svg>
         </button>
       <div class="film__image">
-      <img class="image" src="${poster_path}" alt=${title} data-id=${id}/>
+      <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt=${title} data-id=${id}/>
       <button type="button" class="film__button btn__trailer">Watch trailer</button>
       </div>
       <div class="film__information">
@@ -51,7 +52,9 @@ export default async function openModalOnClick(data) {
             </li>
             <li class="film__item">
               <p class="film__details">Genre</p>
-              <p class="film__info" data-id=${id}>${genres}</p>
+              <p class="film__info" data-id=${id}>${genres
+      .map(elem => elem.name)
+      .join(', ')}</p>
             </li>
           </ul>
         <div class="film__about">
@@ -70,15 +73,17 @@ export default async function openModalOnClick(data) {
         </div>`,
     {
       onShow: instance => {
+        showModal();
         document.addEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
       },
       onClose: instance => {
+        closeModal();
         document.removeEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
-      },
+      },  
     }
   );
 
@@ -90,3 +95,30 @@ function closeKeyDownKeyEsc(e, instance) {
     instance.close();
   }
 }
+
+function showModal() {
+  const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+
+  refs.body.style.position = 'fixed';
+  refs.body.style.top = `-${scrollY}`;
+  refs.body.style.right = `0`;
+  refs.body.style.left = `0`;
+  refs.body.style.paddingRight = `20px`;
+}
+
+function closeModal() {
+  const scrollY = refs.body.style.top;
+  refs.body.style.position = '';
+  refs.body.style.top = '';
+  refs.body.style.paddingRight = `0`;
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
+
+window.addEventListener('scroll', () => {
+  document.documentElement.style.setProperty(
+    '--scroll-y',
+    `${window.scrollY}px`
+  );
+});
+
+
