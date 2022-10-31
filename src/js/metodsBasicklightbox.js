@@ -1,7 +1,7 @@
 const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
-import { refs } from "./refs";
-
+import { refs } from './refs';
+import initStorageBtns from './initStorageBtns';
 
 const btn = document.querySelector('.template');
 
@@ -21,7 +21,7 @@ export default async function openModalOnClick(data) {
 
   const instance = basicLightbox.create(
     `
-    <div class="modal">
+    <div class="modal" data-id=${id}>
         <button type="button" class="modal__close-btn">
             <svg class="" width="14" height="14">
                 <use href="./images/symbol-defs.svg#icon-close-black"></use>
@@ -64,12 +64,23 @@ export default async function openModalOnClick(data) {
               ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
               : `<p class="film__about-text">No information</p>`
           }
-        </div>
-        <div class="button-wrapper">
-          <button type="button" class="film__button btn__watch btn__watch__remove">Add to watched</button>
-          <button type="button" class="film__button btn__queue btn__queue__remove">Add to queue</button>
           </div>
-        </div>
+
+            <ul class="storage">
+              <li class="storage__item">
+                  <label class="storage__label">
+                      <input type="checkbox" value="Watched" class="storage__input visually-hidden" />
+                      <span class="storage__btn">Watched</span>
+                  </label>
+              </li>
+              <li class="storage__item">
+                  <label class="storage__label ">
+                      <input type="checkbox" value="Queue" class="storage__input visually-hidden" />
+                      <span class="storage__btn">Queue</span>
+                  </label>
+              </li>
+            </ul>
+          </div>
         </div>`,
     {
       onShow: instance => {
@@ -83,11 +94,11 @@ export default async function openModalOnClick(data) {
         document.removeEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
-      },  
+      },
     }
   );
 
-  instance.show();
+  instance.show(initStorageBtns);
 }
 
 function closeKeyDownKeyEsc(e, instance) {
@@ -111,7 +122,7 @@ function closeModal() {
   refs.body.style.position = '';
   refs.body.style.top = '';
   refs.body.style.paddingRight = `0`;
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 window.addEventListener('scroll', () => {
@@ -121,4 +132,4 @@ window.addEventListener('scroll', () => {
   );
 });
 
-
+//
