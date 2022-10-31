@@ -29,7 +29,7 @@ export default class LocalStorageAPI {
     try {
       const serializedState = localStorage.getItem(key);
 
-      return serializedState === null ? undefined : JSON.parse(serializedState);
+      return serializedState === null ? [] : JSON.parse(serializedState);
     } catch (error) {
       console.error(error.message);
     }
