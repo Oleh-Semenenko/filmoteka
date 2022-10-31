@@ -23,9 +23,7 @@ export default async function openModalOnClick(data) {
     `
     <div class="modal" data-id=${id}>
         <button type="button" class="modal__close-btn">
-            <svg class="" width="14" height="14">
-                <use href="./images/symbol-defs.svg#icon-close-black"></use>
-            </svg>
+           +
         </button>
       <div class="film__image">
       <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt=${title} data-id=${id}/>
@@ -132,4 +130,3 @@ window.addEventListener('scroll', () => {
   );
 });
 
-//
