@@ -1,7 +1,6 @@
 const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
-import { refs } from "./refs";
-
+import { refs } from './refs';
 
 const btn = document.querySelector('.template');
 
@@ -23,9 +22,7 @@ export default async function openModalOnClick(data) {
     `
     <div class="modal">
         <button type="button" class="modal__close-btn">
-            <svg class="" width="14" height="14">
-                <use href="./images/symbol-defs.svg#icon-close-black"></use>
-            </svg>
+           +
         </button>
       <div class="film__image">
       <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt=${title} data-id=${id}/>
@@ -83,7 +80,7 @@ export default async function openModalOnClick(data) {
         document.removeEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
-      },  
+      },
     }
   );
 
@@ -111,7 +108,7 @@ function closeModal() {
   refs.body.style.position = '';
   refs.body.style.top = '';
   refs.body.style.paddingRight = `0`;
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 window.addEventListener('scroll', () => {
@@ -120,5 +117,3 @@ window.addEventListener('scroll', () => {
     `${window.scrollY}px`
   );
 });
-
-
