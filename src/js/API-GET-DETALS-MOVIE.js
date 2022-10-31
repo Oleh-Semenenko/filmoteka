@@ -11,15 +11,5 @@ export default class GetPrimoryInfoMovie {
     const urlAxios = `${id}?api_key=${this.#api}`;
     const { data } = await axios.get(urlAxios);
     return data;
-    //     const {id,
-    //       original_title,
-    //       vote_average,
-    //       vote_count,
-    //       popularity,
-    //       genres,
-    //       poster_path,
-    //       tagline,
-    //       title,
-    //     } = await data;
   }
 }

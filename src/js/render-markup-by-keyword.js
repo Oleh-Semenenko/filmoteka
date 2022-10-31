@@ -1,6 +1,7 @@
 import Movies from './Movies';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
+import { spinerPlay, spinerStop } from './spinner';
 
 const moviesByKeyword = new Movies({
   url: 'https://api.themoviedb.org/3/search/movie',
@@ -25,7 +26,7 @@ async function handleSubmit(e) {
   }
 
   moviesByKeyword.query = searchQuery;
-
+  spinerPlay();
   try {
     const { results, total_results } = await moviesByKeyword.fetchMovies();
 
@@ -39,5 +40,7 @@ async function handleSubmit(e) {
     refs.moviesList.innerHTML = markup;
   } catch (error) {
     console.log(error);
+  } finally {
+    spinerStop();
   }
 }

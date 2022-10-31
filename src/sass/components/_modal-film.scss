@@ -61,13 +61,10 @@
 }
 
 .image {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     height: 100%;
     width: 100%;
     border-radius: 5px;
-    box-shadow: 5px -3px 15px 1px #645c5cbf;
+    box-shadow: 2px -3px 20px 1px #645c5cbf;
 
     @include tablet {
         width: 264px;
@@ -220,3 +217,62 @@
     left: 0;
     width: 100%;
 }
+
+// ----------------------------------------------------
+
+// body {
+//     font-size: 1.5em;
+//     justify-content: center;
+//     line-height: 1.5;
+//     margin: 0;
+//     padding: 1em 3em;
+// }
+
+// #text {
+//     max-width: 800px;
+// }
+
+// #show {
+//     position: fixed;
+//     top: 30px;
+//     left: 10px;
+// }
+
+// #show,
+// #close {
+//     background: #da1b60;
+//     border: none;
+//     color: #fff;
+//     display: block;
+//     font-size: 1em;
+//     padding: 1em;
+//     width: 200px;
+// }
+
+// #show:hover,
+// #close:hover {
+//     background: #ff8a00;
+//     cursor: pointer;
+// }
+
+// #dialog {
+//     display: none;
+//     position: fixed;
+//     top: 10vh;
+//     left: 10vw;
+//     width: 80vw;
+//     height: 50vh;
+//     border: 1px solid #eee;
+//     border-radius: 4px;
+//     padding: 10px;
+//     text-align: center;
+//     z-index: 1;
+//     background-color: #444;
+//     color: #fff;
+// }
+
+// #dialog.show {
+//     align-items: center;
+//     display: flex;
+//     flex-direction: column;
+// }
