@@ -1,6 +1,6 @@
 .button {
         border: none;
-        background-color: var(--header-text-color);
+        background-color: inherit;
 
         font-weight: 500;
         font-size: 12px;
@@ -24,17 +24,19 @@
 }
 
 .tui-pagination {
-display: flex;
-    justify-content: center;
-}
-
-.pagination-next, .pagination-prev {
-    display: none;
+  text-align: center;
 }
 
 .pagination-first, .pagination-last {
+    // display: none;
     background-color: var(--secondary-background-color);
     border-radius: 5px;
     height: 40px;
 }
 
+
+
+// .pagination-prev,
+// .pagination-next {
+//     display: none;
+// }
