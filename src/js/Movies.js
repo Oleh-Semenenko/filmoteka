@@ -73,18 +73,18 @@ class Movies {
 
   renderMovieCard(movies) {
     return movies
-      .map(({ poster_path, original_title, release_date, genre_ids }) => {
+      .map(({ poster_path, original_title, release_date, genre_ids, id }) => {
         const releaseYear = this.getReleaseYear(release_date);
         const genres = this.getGenres(genre_ids, genresOfMovies).join(', ');
         return `
-      <li class="movie__item">
-  <a class="movie__link" href="">
-  <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" alt="Poster movie ${original_title}"  width="" height="" />
-    <div class="movie__description">
-      <p class="movie__title">${original_title}</p>
-      <p class="movie__info">${genres}  
-      <span class="movie__breacker"> | </span>
-    <span class="movie__year">${releaseYear}</span></p>
+      <li class="movie__item" data-id="${id}">
+  <a class="movie__link" data-id="${id}" href="">
+  <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height="" />
+    <div class="movie__description" data-id="${id}">
+      <p class="movie__title" data-id="${id}">${original_title}</p>
+      <p class="movie__info" data-id="${id}">${genres}  
+      <span class="movie__breacker" data-id="${id}"> | </span>
+    <span class="movie__year" data-id="${id}">${releaseYear}</span></p>
     </div>
   </a>
 </li>`;

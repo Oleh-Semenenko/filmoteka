@@ -1,4 +1,5 @@
 @import './common';
+@import './basicklightbox';
 @import './base/reset';
 
 @import './utilits/hidden';
@@ -7,9 +8,11 @@
 
 @import './components/button';
 @import './components/card';
-@import './components/modal';
 @import './components/container';
+@import './components/modal-film';
 @import './components/pagination';
+@import './components/button-up';
+
 
 @import './layout/header';
 @import './layout/gallery';

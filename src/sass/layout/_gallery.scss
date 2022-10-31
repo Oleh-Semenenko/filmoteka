@@ -1,7 +1,7 @@
 .movie {
   position: relative;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 .movie__item {
@@ -48,11 +48,19 @@
   gap: 5px;
   color: var(--accent-color);
 }
+.movie__rating {
+  font-size: 12px;
+  line-height: 14px;
+  padding: 1px 6px;
+  background: #ff6b01;
+  border-radius: 5px;
+  color: white;
+}
 
 @include tablet {
   .movie {
     padding-top: 60px;
-    padding-bottom: 30px;
+    padding-bottom: 60px;
   }
 
   .movie__list {
@@ -118,6 +126,7 @@
 }
 .default-height {
   min-height: calc(100vh - 388px);
+
   @include tablet {
     min-height: calc(100vh - 298px);
   }
@@ -125,4 +134,14 @@
   @include desktop {
     min-height: calc(100vh - 293px);
   }
+}
+
+.background-lib {
+  background-image: url(/src/images/poster-placeholder.png);
+  background-color: #f7f7f7;
+  width: 100%;
+
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
