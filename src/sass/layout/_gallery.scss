@@ -138,7 +138,7 @@
 
 .background-lib {
   background-image: url(/src/images/poster-placeholder.png);
-  background-color: #f7f7f7;
+  background-color: var(--background-color);
   width: 100%;
 
   background-position: 50%;
