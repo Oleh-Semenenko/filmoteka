@@ -3,10 +3,9 @@ import Movies from './Movies';
 import renderMarkupStartMoviesList from './renderMarkupStartMoviesList';
 import { refs } from './refs';
 
-
 const options = {
-  totalItems: 100,
-  itemsPerPage: 20,
+  totalItems: 1000,
+  itemsPerPage: 10,
   visiblePages: 5,
   page: 1,
   centerAlign: false,
@@ -19,7 +18,7 @@ const options = {
       '<button class="button selected" type="button"><strong class="tui-page-btn tui-is-selected">{{page}}</strong></button>',
     moveButton:
       '<button class="button pagination-{{type}}" type="button">' +
-      '<svg width="16" height="16"><use href="./images/symbol-defs.svg#icon-arrow-left"></use></svg>',
+      '<span class="tui-ico-{{type}}"><{{type}}></span>',
     disabledMoveButton:
       '<button class="button pagination-{{type}}" type="button">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
