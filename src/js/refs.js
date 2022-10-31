@@ -10,4 +10,6 @@ export const refs = {
   searchFormEl: document.querySelector('.header__form'),
   headerBtn: document.querySelector('.header__list-btn'),
   headerNav: document.querySelector('.header__nav'),
+
+  body: document.querySelector('body'),
 };
