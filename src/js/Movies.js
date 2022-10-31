@@ -33,6 +33,10 @@ class Movies {
     return data;
   }
 
+  updatePageNumber(page) {
+    this.options.params.page = page;
+  }
+
   get query() {
     const { query } = this.options.params;
     return query;
@@ -94,3 +98,12 @@ class Movies {
 }
 
 export default Movies;
+
+export const movies = new Movies({
+  url: `https://api.themoviedb.org/3/trending/movie/week`,
+  params: {
+    api_key: 'f23afa13cf10e0a13fa8c4a5195ece8b',
+    media_type: 'movie',
+    page: 1,
+  },
+});
