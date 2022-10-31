@@ -110,6 +110,7 @@ function closeModal() {
   const scrollY = refs.body.style.top;
   refs.body.style.position = '';
   refs.body.style.top = '';
+  refs.body.style.paddingRight = `0`;
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
