@@ -11,3 +11,4 @@ export const refs = {
   headerNav: document.querySelector('.header__nav'),
   body: document.querySelector('body'),
 };
+

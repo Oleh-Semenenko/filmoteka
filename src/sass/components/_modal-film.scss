@@ -37,29 +37,26 @@
 }
 
 .modal__close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
   cursor: pointer;
-  z-index: 1;
-  background-color: #0000;
   border: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  outline: none;
   transition: color 0.25s linear;
-  display: flex;
-  position: absolute;
-  top: 0%;
-  right: 1%;
-  transform: rotate(45deg);
+}
 
-  // top: 8px;
-  // right: 8px;
-  // padding: 0;
-  // width: 30px;
-  // height: 30px;
-  // background-color: transparent;
-  // border: 1px solid transparent;
-  // outline: none;
-
+.modal__icon {
   &:hover,
   &:focus {
     color: var(--accent-color);
