@@ -10,5 +10,6 @@ export const refs = {
   headerBtn: document.querySelector('.header__list-btn'),
   headerNav: document.querySelector('.header__nav'),
   body: document.querySelector('body'),
+  searchNotification: document.querySelector('#search-notification'),
 };
 

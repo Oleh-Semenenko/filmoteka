@@ -68,6 +68,10 @@ class Movies {
       return acc;
     }, []);
 
+    if (namesGenre.length === 0) {
+      return ['Other'];
+    }
+
     if (namesGenre.length > 3) {
       return [namesGenre[0], namesGenre[1], 'Other'];
     }

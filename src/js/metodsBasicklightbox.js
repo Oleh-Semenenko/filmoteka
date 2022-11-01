@@ -53,14 +53,18 @@ export default async function openModalOnClick(data) {
             <li class="film__item">
               <p class="film__details">Vote / Votes</p>
               <p class="film__info--uper">
-                <span class="film__rating--orange" data-id=${id}>${vote_average}</span>
+                <span class="film__rating--orange" data-id=${id}>${vote_average.toFixed(
+      1
+    )}</span>
                 <span class="film__rating--divider"> / </span>
       <span class="vote-count" data-id=${id}>${vote_count}</span>
               </p>
             </li>
             <li class="film__item">
               <p class="film__details">Popularity</p>
-              <p class="film__info--uper" data-id=${id}>${popularity}</p>
+              <p class="film__info--uper" data-id=${id}>${popularity.toFixed(
+      0
+    )}</p>
             </li>
             <li class="film__item">
               <p class="film__details">Original title</p>
@@ -159,5 +163,4 @@ window.addEventListener('scroll', () => {
     `${window.scrollY}px`
   );
 });
-
 
