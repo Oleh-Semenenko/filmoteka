@@ -2,9 +2,9 @@ const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
 import getDataTrailerMovie from './getDataTrailerMovie';
 import onModalTrailerMovie from './onModalTrailerMovie';
-// import makeFilmModalMarkup from './modal-film';
-
-const btn = document.querySelector('.template');
+import { refs } from './refs';
+import initStorageBtns from './initStorageBtns';
+import svg from '../images/symbol-defs.svg';
 
 export default async function openModalOnClick(data) {
   const {
@@ -21,21 +21,21 @@ export default async function openModalOnClick(data) {
   } = await data;
 
   const dataOfTrailer = await getDataTrailerMovie(id);
-  // console.log(dataOfTrailer);
+  
   const hasTrailer = dataOfTrailer.some(element => element.type === 'Trailer');
-  // console.log(hasTrailer);
+ 
 
   const instance = basicLightbox.create(
     `
-    <div class="modal js-modal-movie">
+    <div class="modal js-modal-movie" data-id=${id}>
         <button type="button" class="modal__close-btn">
             <svg class="modal__icon" width="14" height="14">
-                <use href="../images/symbol-defs.svg#icon-close-black"></use>
+                <use href="${svg}#icon-close-black"></use>
             </svg>
         </button>
       
         <div class="film__image">
-      <img class="image" src="${poster_path}" alt="${title}" data-movieid="${id}"/>
+      <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title}" data-movieid="${id}"/>
      ${
        hasTrailer
          ? ` <button
@@ -46,7 +46,6 @@ export default async function openModalOnClick(data) {
          </button>`
          : ''
      }
-      
       </div>
       <div class="film__information">
           <h2 class="film__title" data-id=${id}>${title}</h2>
@@ -69,32 +68,46 @@ export default async function openModalOnClick(data) {
             </li>
             <li class="film__item">
               <p class="film__details">Genre</p>
-              <p class="film__info" data-id=${id}>${genres}</p>
+              <p class="film__info" data-id=${id}>${genres
+      .map(elem => elem.name)
+      .join(', ')}</p>
             </li>
           </ul>
         <div class="film__about">
           <h3 class="film__about-title">About</h3>
-          ${
-            overview
-              ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
-              : `<p class="film__about-text">No information</p>`
-          }
-        </div>
-        <div class="button-wrapper">
-          <button type="button" class="film__button btn__watch btn__watch__remove">Add to watched</button>
-          <button type="button" class="film__button btn__queue btn__queue__remove">Add to queue</button>
+          ${overview
+      ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
+      : `<p class="film__about-text">No information</p>`
+    }
           </div>
-        </div>
-     </div>
-  </div>
-     `,
+
+            <ul class="storage">
+              <li class="storage__item">
+                  <label class="storage__label">
+                      <input type="checkbox" value="Watched" class="storage__input visually-hidden" />
+                      <span class="storage__btn">Watched</span>
+                  </label>
+              </li>
+              <li class="storage__item">
+                  <label class="storage__label ">
+                      <input type="checkbox" value="Queue" class="storage__input visually-hidden" />
+                      <span class="storage__btn">Queue</span>
+                  </label>
+              </li>
+            </ul>
+          </div>
+        </div>`,
     {
       onShow: instance => {
+        showModal();
         document.addEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
+        const closeBtn = instance.element().querySelector('.modal__close-btn');
+        closeBtn.addEventListener('click', e => instance.close());
       },
       onClose: instance => {
+        closeModal();
         document.removeEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
@@ -106,16 +119,45 @@ export default async function openModalOnClick(data) {
     }
   );
 
-  instance.show();
+  instance.show(initStorageBtns);
 
   const btnModalTrailerEl = document.querySelector('.js-btn-modal-trailer');
   btnModalTrailerEl.addEventListener('click', () =>
     onModalTrailerMovie(instance)
   );
-}
+ };
 
 function closeKeyDownKeyEsc(e, instance) {
   if (e.code === 'Escape') {
     instance.close();
   }
+};
+
+
+
+function showModal() {
+  const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+
+  refs.body.style.position = 'fixed';
+  refs.body.style.top = `-${scrollY}`;
+  refs.body.style.right = `0`;
+  refs.body.style.left = `0`;
+  refs.body.style.paddingRight = `20px`;
 }
+
+function closeModal() {
+  const scrollY = refs.body.style.top;
+  refs.body.style.position = '';
+  refs.body.style.top = '';
+  refs.body.style.paddingRight = `0`;
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
+
+window.addEventListener('scroll', () => {
+  document.documentElement.style.setProperty(
+    '--scroll-y',
+    `${window.scrollY}px`
+  );
+});
+
+

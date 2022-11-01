@@ -1,11 +1,14 @@
 import Pagination from 'tui-pagination';
-import Movies from './Movies';
 import renderMarkupStartMoviesList from './renderMarkupStartMoviesList';
 import { refs } from './refs';
+import { movies } from './Movies';
+import svg from '../images/symbol-defs.svg';
 
+const arrowLeft = `<svg height="16" width="16"><use href="${svg}#icon-arrow-left"></use></svg>`;
+const arrowRight = `<svg height="16" width="16"><use href="${svg}#icon-arrow-right"></use></svg>`;
 
 const options = {
-  totalItems: 100,
+  totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -17,13 +20,40 @@ const options = {
     page: '<button class="button" type="button">{{page}}</button>',
     currentPage:
       '<button class="button selected" type="button"><strong class="tui-page-btn tui-is-selected">{{page}}</strong></button>',
-    moveButton:
-      '<button class="button pagination-{{type}}" type="button">' +
-      '<svg width="16" height="16"><use href="./images/symbol-defs.svg#icon-arrow-left"></use></svg>',
-    disabledMoveButton:
-      '<button class="button pagination-{{type}}" type="button">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</button>',
+    moveButton({ type }) {
+      if (type === 'first') {
+        return '<button class="button" type="button">first</button>';
+      } else if (type === 'last') {
+        return '<button class="button" type="button">last</button>';
+      } else if (type === 'prev') {
+        return (
+          '<button class="button" type="button">' + arrowLeft + '</button>'
+        );
+      } else {
+        return (
+          '<button class="button" type="button">' + arrowRight + '</button>'
+        );
+      }
+    },
+    disabledMoveButton({ type }) {
+      if (type === 'first') {
+        return '<button class="button disabled" type="button">first</button>';
+      } else if (type === 'last') {
+        return '<button class="button disabled" type="button">last</button>';
+      } else if (type === 'prev') {
+        return (
+          '<button class="button disabled" type="button">' +
+          arrowLeft +
+          '</button>'
+        );
+      } else {
+        return (
+          '<button class="button disabled" type="button">' +
+          arrowRight +
+          '</button>'
+        );
+      }
+    },
     moreButton:
       '<button class="button" type="button">' +
       '<span class="tui-ico-ellip">...</span>' +
@@ -31,15 +61,14 @@ const options = {
   },
 };
 
-const pagination = new Pagination('tui-pagination-container', options);
+export const pagination = new Pagination('tui-pagination-container', options);
 
-// click on pagination
 pagination.on('beforeMove', event => {
   const currentPage = event.page;
+
   fetchData(currentPage);
 });
 
-const BASE_URL = 'https://api.themoviedb.org';
 const LOCALSTORAGE_KEY = 'current-page';
 
 const localStorageCurrentPage = localStorage.getItem(LOCALSTORAGE_KEY);
@@ -51,20 +80,12 @@ if (localStorageCurrentPage) {
 }
 
 async function fetchData(page) {
-  const params = new URLSearchParams({
-    api_key: 'f23afa13cf10e0a13fa8c4a5195ece8b',
-    media_type: 'movie',
-    page: page,
-  });
+  movies.updatePageNumber(page);
+  const data = await movies.fetchMovies();
 
-  const trendingMovies = new Movies({
-    url: `${BASE_URL}/3/trending/movie/week?${params}`,
-    params: params,
-  });
+  pagination.setTotalItems(data.total_results);
 
-  const data = await trendingMovies.fetchMovies();
-
-  const markup = trendingMovies.renderMovieCard(data.results);
+  const markup = movies.renderMovieCard(data.results);
   refs.moviesList.innerHTML = markup;
 
   localStorage.setItem(LOCALSTORAGE_KEY, page);

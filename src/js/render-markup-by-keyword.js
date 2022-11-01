@@ -1,14 +1,8 @@
-import Movies from './Movies';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
-
-const moviesByKeyword = new Movies({
-  url: 'https://api.themoviedb.org/3/search/movie',
-  params: {
-    api_key: '084c550b6f1767443109bcf4bcaee21b',
-    page: 1,
-  },
-});
+import { spinerPlay, spinerStop } from './spinner';
+import { pagination } from './pagination';
+import { movies } from './Movies';
 
 refs.searchFormEl.addEventListener('submit', handleSubmit);
 
@@ -24,10 +18,13 @@ async function handleSubmit(e) {
     return Notify.info('Enter something in the form!');
   }
 
-  moviesByKeyword.query = searchQuery;
+  movies.url = 'https://api.themoviedb.org/3/search/movie';
+  movies.query = searchQuery;
+  movies.updatePageNumber(1);
 
+  spinerPlay();
   try {
-    const { results, total_results } = await moviesByKeyword.fetchMovies();
+    const { results, total_results } = await movies.fetchMovies();
 
     if (total_results === 0) {
       return Notify.failure(
@@ -35,9 +32,13 @@ async function handleSubmit(e) {
       );
     }
 
-    const markup = moviesByKeyword.renderMovieCard(results);
+    pagination.reset(total_results);
+
+    const markup = movies.renderMovieCard(results);
     refs.moviesList.innerHTML = markup;
   } catch (error) {
     console.log(error);
+  } finally {
+    spinerStop();
   }
 }
