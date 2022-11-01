@@ -53,13 +53,15 @@
   border: 1px solid transparent;
   border-radius: 50%;
   outline: none;
-  transition: color 0.25s linear;
+  
 }
 
 .modal__icon {
+  fill: var(--primary-text-color);
+  transition: fill 250ms linear;
   &:hover,
   &:focus {
-    color: var(--accent-color);
+    fill: var(--accent-color);
   }
 }
 
