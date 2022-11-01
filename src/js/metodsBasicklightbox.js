@@ -2,8 +2,9 @@ const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
 import { refs } from './refs';
 import initStorageBtns from './initStorageBtns';
+import svg from '../images/symbol-defs.svg';
 
-const btn = document.querySelector('.template');
+// const btn = document.querySelector('.template');
 
 export default async function openModalOnClick(data) {
   const {
@@ -23,7 +24,9 @@ export default async function openModalOnClick(data) {
     `
     <div class="modal" data-id=${id}>
         <button type="button" class="modal__close-btn">
-           +
+          <svg class="modal__icon" width="14" height="14">
+            <use href="${svg}#icon-close-black"></use>
+          </svg>
         </button>
       <div class="film__image">
       <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt=${title} data-id=${id}/>
@@ -57,11 +60,10 @@ export default async function openModalOnClick(data) {
           </ul>
         <div class="film__about">
           <h3 class="film__about-title">About</h3>
-          ${
-            overview
-              ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
-              : `<p class="film__about-text">No information</p>`
-          }
+          ${overview
+      ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
+      : `<p class="film__about-text">No information</p>`
+    }
           </div>
 
             <ul class="storage">
@@ -86,6 +88,8 @@ export default async function openModalOnClick(data) {
         document.addEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
+        const closeBtn = instance.element().querySelector('.modal__close-btn');
+        closeBtn.addEventListener('click', e => instance.close());
       },
       onClose: instance => {
         closeModal();
@@ -104,6 +108,12 @@ function closeKeyDownKeyEsc(e, instance) {
     instance.close();
   }
 }
+
+
+function onCloseBtnClick(e, instance) {
+  instance.close();
+}
+
 
 function showModal() {
   const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
@@ -129,4 +139,5 @@ window.addEventListener('scroll', () => {
     `${window.scrollY}px`
   );
 });
+
 

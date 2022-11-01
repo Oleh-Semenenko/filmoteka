@@ -7,14 +7,17 @@ const getMovieInfo = new GetPrimoryInfoMovie();
 
 refs.moviesList.addEventListener('click', openModal);
 
-async function openModal(e) {
+
+function openModal(e) {
   e.preventDefault();
   const id = Number(e.target.dataset.id);
 
-  const data = await getMovieInfo.fetchMovie(id);
+  const data = getMovieInfo.fetchMovie(id);
   try {
     openModalOnClick(data);
   } catch (error) {
     return Notify.failure(error.message);
   }
 }
+
+
