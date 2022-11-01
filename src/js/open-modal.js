@@ -15,7 +15,6 @@ function openModal(e) {
     params: { api_key: '084c550b6f1767443109bcf4bcaee21b' },
   });
 
-  const data = getMovieInfo.fetchMovie(id);
 
   try {
     const data = await getMovieInfo.fetchMovies();
