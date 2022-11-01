@@ -1,6 +1,8 @@
 const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
-import makeFilmModalMarkup from './modal-film';
+import getDataTrailerMovie from './getDataTrailerMovie';
+import onModalTrailerMovie from './onModalTrailerMovie';
+// import makeFilmModalMarkup from './modal-film';
 
 const btn = document.querySelector('.template');
 
@@ -18,17 +20,33 @@ export default async function openModalOnClick(data) {
     overview,
   } = await data;
 
+  const dataOfTrailer = await getDataTrailerMovie(id);
+  // console.log(dataOfTrailer);
+  const hasTrailer = dataOfTrailer.some(element => element.type === 'Trailer');
+  // console.log(hasTrailer);
+
   const instance = basicLightbox.create(
     `
-    <div class="modal">
+    <div class="modal js-modal-movie">
         <button type="button" class="modal__close-btn">
-            <svg class="" width="14" height="14">
-                <use href="./images/symbol-defs.svg#icon-close-black"></use>
+            <svg class="modal__icon" width="14" height="14">
+                <use href="../images/symbol-defs.svg#icon-close-black"></use>
             </svg>
         </button>
-      <div class="film__image">
-      <img class="image" src="${poster_path}" alt=${title} data-id=${id}/>
-      <button type="button" class="film__button btn__trailer">Watch trailer</button>
+      
+        <div class="film__image">
+      <img class="image" src="${poster_path}" alt="${title}" data-movieid="${id}"/>
+     ${
+       hasTrailer
+         ? ` <button
+           type="button"
+           class="film__button btn__trailer  js-btn-modal-trailer"
+         >
+           Watch trailer
+         </button>`
+         : ''
+     }
+      
       </div>
       <div class="film__information">
           <h2 class="film__title" data-id=${id}>${title}</h2>
@@ -67,7 +85,9 @@ export default async function openModalOnClick(data) {
           <button type="button" class="film__button btn__queue btn__queue__remove">Add to queue</button>
           </div>
         </div>
-        </div>`,
+     </div>
+  </div>
+     `,
     {
       onShow: instance => {
         document.addEventListener('keydown', e =>
@@ -78,11 +98,20 @@ export default async function openModalOnClick(data) {
         document.removeEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
+
+        btnModalTrailerEl.removeEventListener('click', e =>
+          onModalTrailerMovie(instance)
+        );
       },
     }
   );
 
   instance.show();
+
+  const btnModalTrailerEl = document.querySelector('.js-btn-modal-trailer');
+  btnModalTrailerEl.addEventListener('click', () =>
+    onModalTrailerMovie(instance)
+  );
 }
 
 function closeKeyDownKeyEsc(e, instance) {
