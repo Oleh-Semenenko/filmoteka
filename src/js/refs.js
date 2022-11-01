@@ -12,3 +12,4 @@ export const refs = {
   body: document.querySelector('body'),
   searchNotification: document.querySelector('#search-notification'),
 };
+
