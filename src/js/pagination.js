@@ -87,6 +87,7 @@ async function fetchData(page) {
 
   const markup = movies.renderMovieCard(data.results);
   refs.moviesList.innerHTML = markup;
+  refs.searchNotification.textContent = '';
 
   localStorage.setItem(LOCALSTORAGE_KEY, page);
 }

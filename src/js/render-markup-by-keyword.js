@@ -1,4 +1,3 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 import { spinerPlay, spinerStop } from './spinner';
 import { pagination } from './pagination';
@@ -15,7 +14,7 @@ async function handleSubmit(e) {
   const searchQuery = query.value.trim().toLowerCase();
 
   if (!searchQuery) {
-    return Notify.info('Enter something in the form!');
+    return onSearchResultNotification('Enter something in the form!');
   }
 
   movies.url = 'https://api.themoviedb.org/3/search/movie';
@@ -27,11 +26,14 @@ async function handleSubmit(e) {
     const { results, total_results } = await movies.fetchMovies();
 
     if (total_results === 0) {
-      return Notify.failure(
-        `Sorry, there are no images matching your search query "${searchQuery}". Please try again.`
+      return onSearchResultNotification(
+        `Sorry, there are no movies matching your search query ${searchQuery}. Please write an existing movie.`
       );
     }
 
+    onSearchResultNotification(
+      `${total_results} movies were found matching your request.`
+    );
     pagination.reset(total_results);
 
     const markup = movies.renderMovieCard(results);
@@ -40,5 +42,9 @@ async function handleSubmit(e) {
     console.log(error);
   } finally {
     spinerStop();
+  }
+
+  function onSearchResultNotification(search) {
+    refs.searchNotification.textContent = search;
   }
 }
