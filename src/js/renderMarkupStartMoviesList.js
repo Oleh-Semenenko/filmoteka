@@ -1,4 +1,3 @@
-import Movies from './Movies';
 import { refs } from './refs';
 import genresOfMovies from '../data/genresOfMovies.json';
 import { spinerPlay, spinerStop } from './spinner';
@@ -10,9 +9,9 @@ async function renderMarkupStartMoviesList(genresOfMovies) {
     movies.url = 'https://api.themoviedb.org/3/trending/movie/week';
     movies.updatePageNumber(1);
     const dataMovies = await movies.fetchMovies();
-    const movies = dataMovies.results;
+    const results = dataMovies.results;
 
-    refs.moviesList.innerHTML = movies.renderMovieCard(movies);
+    refs.moviesList.innerHTML = movies.renderMovieCard(results);
   } catch (error) {
     console.log(error.message);
   } finally {

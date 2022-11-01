@@ -8,8 +8,14 @@
 
         padding-right: 16px;
         padding-left: 16px;
-        margin-top: 60px;
-        margin-bottom: 60px;
+
+        svg {
+            vertical-align: middle;
+        }
+
+        &.disabled {
+            display: none;
+        }
     }
 
 .selected {
@@ -19,24 +25,16 @@
     color: var(--header-text-color);
 }
 
-.arrows {
-    background-color: var(--secondary-background-color);
-}
-
 .tui-pagination {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
 }
 
 .pagination-first, .pagination-last {
-    // display: none;
     background-color: var(--secondary-background-color);
     border-radius: 5px;
     height: 40px;
 }
 
-
-
-// .pagination-prev,
-// .pagination-next {
-//     display: none;
-// }
