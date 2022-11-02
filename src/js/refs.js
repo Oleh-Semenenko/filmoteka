@@ -1,5 +1,6 @@
 export const refs = {
   spinner: document.querySelector('.js-spinner'),
+  swiper: document.querySelector('.js-slider'),
   load: document.querySelector('[data-load]'),
   watchedBtn: document.querySelector('[data-action="watched"]'),
   queueBtn: document.querySelector('[data-action="queue"]'),
@@ -12,4 +13,3 @@ export const refs = {
   body: document.querySelector('body'),
   searchNotification: document.querySelector('#search-notification'),
 };
-
