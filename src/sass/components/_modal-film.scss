@@ -94,7 +94,9 @@
   background-position: center;
   background-size: cover;
 
-  background-image: url(/src/images/poster-placeholder.png);
+  // background-image: url(/src/images/poster-placeholder.png);
+
+
 
   @include tablet {
     margin-bottom: 0;
@@ -106,6 +108,31 @@
   @include desktop {
     width: 396px;
     height: 477.8px;
+  }
+}
+
+.film__overlay {
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-text-color);
+  opacity: 1;
+  z-index: 3;
+
+
+  transition: opasity 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    opacity: 0.2;
+  }
+}
+
+.btn-play {
+  z-index: 5;
+  visibility: hidden;
+  transition: visibility 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    visibility: visible;
   }
 }
 
