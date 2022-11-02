@@ -1,0 +1,64 @@
+.section-slider {
+  @include tablet {
+    padding-top: 10px;
+  }
+
+  @include desktop {
+    padding-top: 20px;
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.slider__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px;
+
+  border-radius: 50%;
+  border: none;
+
+  background-color: #ff6b08a0;
+  fill: rgb(255, 255, 255);
+
+  z-index: 100;
+
+  transition: background-color 250ms, fill 250ms;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(212, 209, 209, 0.36);
+    fill: #ff6b08;
+  }
+
+  &--prev {
+    left: 5px;
+  }
+
+  &--next {
+    right: 5px;
+  }
+}
+
+.slider__svg {
+  width: 10px;
+  height: 10px;
+
+  @include tablet {
+    width: 20px;
+    height: 20px;
+  }
+
+  @mixin desktop {
+    width: 30px;
+    height: 30px;
+  }
+}
