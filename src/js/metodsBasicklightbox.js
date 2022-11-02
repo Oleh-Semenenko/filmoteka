@@ -31,7 +31,7 @@ export default async function openModalOnClick(data) {
             <svg class="modal__icon" width="14" height="14">
                 <use href="${svg}#icon-close-black"></use>
             </svg>
-        </button>
+          </button>
           <div class="film__image">
               <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title}" data-movieid="${id}"/>
                 ${

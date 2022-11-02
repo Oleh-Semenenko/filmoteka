@@ -1,8 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Movies from './Movies';
-// import GetPrimoryInfoMovie from './API-GET-DETALS-MOVIE';
 import openModalOnClick from './metodsBasicklightbox';
-// import modalTrailerMovie from './modalTrailerMovie';
 import { refs } from './refs.js';
 
 refs.moviesList.addEventListener('click', openModal);
