@@ -21,9 +21,8 @@ export default async function openModalOnClick(data) {
   } = await data;
 
   const dataOfTrailer = await getDataTrailerMovie(id);
-  
+
   const hasTrailer = dataOfTrailer.some(element => element.type === 'Trailer');
- 
 
   const instance = basicLightbox.create(
     `
@@ -79,23 +78,24 @@ export default async function openModalOnClick(data) {
           </ul>
         <div class="film__about">
           <h3 class="film__about-title">About</h3>
-          ${overview
-      ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
-      : `<p class="film__about-text">No information</p>`
-    }
+          ${
+            overview
+              ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
+              : `<p class="film__about-text">No information</p>`
+          }
           </div>
 
             <ul class="storage">
               <li class="storage__item">
                   <label class="storage__label">
                       <input type="checkbox" value="Watched" class="storage__input visually-hidden" />
-                      <span class="storage__btn">Watched</span>
+                      <span class="storage__btn" id="togle-watched" style="font-size: 10px">Add to Watched</span>
                   </label>
               </li>
               <li class="storage__item">
                   <label class="storage__label ">
                       <input type="checkbox" value="Queue" class="storage__input visually-hidden" />
-                      <span class="storage__btn">Queue</span>
+                      <span class="storage__btn" id="togle-queue" style="font-size: 10px">Add to Queue</span>
                   </label>
               </li>
             </ul>
@@ -129,15 +129,13 @@ export default async function openModalOnClick(data) {
   btnModalTrailerEl.addEventListener('click', () =>
     onModalTrailerMovie(instance)
   );
- };
+}
 
 function closeKeyDownKeyEsc(e, instance) {
   if (e.code === 'Escape') {
     instance.close();
   }
-};
-
-
+}
 
 function showModal() {
   const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
@@ -163,4 +161,3 @@ window.addEventListener('scroll', () => {
     `${window.scrollY}px`
   );
 });
-
