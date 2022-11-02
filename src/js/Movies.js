@@ -99,6 +99,22 @@ class Movies {
       })
       .join('');
   }
+
+  renderMovieCardSwiper(movies) {
+    return movies
+      .map(({ poster_path, original_title, release_date, genre_ids, id }) => {
+        const releaseYear = this.getReleaseYear(release_date);
+        const genres = this.getGenres(genre_ids, genresOfMovies).join(', ');
+        return `
+      <li class="slider__item swiper-slide" data-id="${id}">
+  <a class="slider__link" data-id="${id}" href="">
+  <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="slider__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height="" />
+   
+  </a>
+</li>`;
+      })
+      .join('');
+  }
 }
 
 export default Movies;
