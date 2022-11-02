@@ -12,7 +12,7 @@ async function openModal(e) {
   const id = e.target.dataset.id;
 
   const getMovieInfo = new Movies({
-    url: https://api.themoviedb.org/3/movie/${id},
+    url: `https://api.themoviedb.org/3/movie/${id}`,
     params: { api_key: '084c550b6f1767443109bcf4bcaee21b' },
   });
 
