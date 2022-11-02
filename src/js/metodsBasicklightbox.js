@@ -33,20 +33,16 @@ export default async function openModalOnClick(data) {
                 <use href="${svg}#icon-close-black"></use>
             </svg>
         </button>
-      
-        <div class="film__image">
-      <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title}" data-movieid="${id}"/>
-     ${
-       hasTrailer
-         ? ` <button
-           type="button"
-           class="film__button btn__trailer  js-btn-modal-trailer"
-         >
-           Watch trailer
-         </button>`
-         : ''
-     }
-      </div>
+          <div class="film__image">
+              <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title}" data-movieid="${id}"/>
+                ${
+                  hasTrailer
+                    ? ` <button
+                  type="button"
+                  class="film__button btn__trailer  js-btn-modal-trailer">Watch trailer</button>`
+                    : ''
+                }
+            </div>
       <div class="film__information">
           <h2 class="film__title" data-id=${id}>${title}</h2>
           <ul class="film__list">
@@ -79,10 +75,11 @@ export default async function openModalOnClick(data) {
           </ul>
         <div class="film__about">
           <h3 class="film__about-title">About</h3>
-          ${overview
-      ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
-      : `<p class="film__about-text">No information</p>`
-    }
+          ${
+            overview
+              ? `<p class="film__about-text" data-id=${id}>${overview}</p>`
+              : `<p class="film__about-text">No information</p>`
+          }
           </div>
 
             <ul class="storage">

@@ -24,6 +24,7 @@ async function handleSubmit(e) {
   spinerPlay();
   try {
     const { results, total_results } = await movies.fetchMovies();
+    console.log(results);
 
     if (total_results === 0) {
       return onSearchResultNotification(
