@@ -26,7 +26,7 @@ export default async function openModalOnClick(data) {
 
   const instance = basicLightbox.create(
     `
-    <div class="modal js-modal-movie" data-id=${id}>
+    <div class="modal js-modal-movie" data-id="${id}">
         <button type="button" class="modal__close-btn">
             <svg class="modal__icon" width="14" height="14">
                 <use href="${svg}#icon-close-black"></use>
