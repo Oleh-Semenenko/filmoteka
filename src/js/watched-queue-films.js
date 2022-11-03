@@ -1,5 +1,5 @@
 import { refs } from './refs';
-import Movies from './Movies';
+import Movies from './movies';
 
 const films = new Movies({
   url: 'https://api.themoviedb.org/3/movie',
