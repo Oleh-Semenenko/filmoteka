@@ -20,12 +20,10 @@ export default async function openModalOnClick(data) {
     title,
     overview,
   } = await data;
-  console.log(data);
 
   const dataOfTrailer = await getDataTrailerMovie(id);
 
   const hasTrailer = dataOfTrailer.some(element => element.type === 'Trailer');
-  console.log(hasTrailer);
 
   const instance = basicLightbox.create(
     `
