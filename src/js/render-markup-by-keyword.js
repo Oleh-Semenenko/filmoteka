@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import { spinerPlay, spinerStop } from './spinner';
 import { pagination } from './pagination';
-import { movies } from './Movies';
+import { movies } from './movies';
 
 refs.searchFormEl.addEventListener('submit', handleSubmit);
 

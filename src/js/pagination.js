@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
-import renderMarkupStartMoviesList from './renderMarkupStartMoviesList';
+import renderMarkupStartMoviesList from './render-markup-start-movies-list';
 import { refs } from './refs';
-import { movies } from './Movies';
+import { movies } from './movies';
 import svg from '../images/symbol-defs.svg';
 
 const LOCALSTORAGE_KEY = 'current-page';

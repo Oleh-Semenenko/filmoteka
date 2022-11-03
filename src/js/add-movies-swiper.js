@@ -4,7 +4,7 @@ import '../../node_modules/swiper/swiper-bundle.css';
 import { refs } from './refs';
 
 import { spinerPlay, spinerStop } from './spinner';
-import Movies from './Movies';
+import Movies from './movies';
 
 const moviesSwiper = new Movies({
   url: 'https://api.themoviedb.org/3/trending/movie/day',

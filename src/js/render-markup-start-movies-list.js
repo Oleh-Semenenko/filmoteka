@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import genresOfMovies from '../data/genresOfMovies.json';
 import { spinerPlay, spinerStop } from './spinner';
-import { movies } from './Movies';
+import { movies } from './movies';
 
 async function renderMarkupStartMoviesList(genresOfMovies) {
   spinerPlay();
