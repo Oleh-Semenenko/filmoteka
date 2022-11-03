@@ -14,7 +14,7 @@ const parcedWatchedFilms = JSON.parse(savedWatched);
 const savedQueue = localStorage.getItem('Queue');
 const parcedQueueFilms = JSON.parse(savedQueue);
 
-if (!savedWatched  || parcedWatchedFilms.length === 0) {
+if (!savedWatched || parcedWatchedFilms.length === 0) {
   return;
 } else {
   refs.watchedBtn.addEventListener('click', onWatchBtnClick);
@@ -40,7 +40,7 @@ if (!savedWatched  || parcedWatchedFilms.length === 0) {
 }
 
 if (!savedQueue || parcedWatchedFilms.length === 0) {
-  return
+  return;
 } else {
   refs.queueBtn.addEventListener('click', onQueueBtnClick);
 
@@ -65,29 +65,26 @@ if (!savedQueue || parcedWatchedFilms.length === 0) {
 }
 
 function renderMovie(movies) {
-    return movies
-      .map(({ poster_path, original_title, release_date, genres, id }) => {
-        console.log(genres);
-        return `
+  return movies
+    .map(({ poster_path, original_title, release_date, genres, id }) => {
+      console.log(genres);
+      return `
       <li class="movie__item" data-id="${id}">
   <a class="movie__link" data-id="${id}" href="">
   <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height="" />
     <div class="movie__description" data-id="${id}">
       <p class="movie__title" data-id="${id}">${original_title}</p>
       <p class="movie__info" data-id="${id}">${genres
-          .map(elem => elem.name)
-          .join(', ')}  
+        .map(elem => elem.name)
+        .join(', ')}  
       <span class="movie__breacker" data-id="${id}"> | </span>
     <span class="movie__year" data-id="${id}">${release_date
-          .split('-')
-          .slice(0, 1)
-          .join('')}</span></p>
+        .split('-')
+        .slice(0, 1)
+        .join('')}</span></p>
     </div>
   </a>
-</li>`; 
-      })
-      .join('');
-  }
-
-
-
+</li>`;
+    })
+    .join('');
+}
