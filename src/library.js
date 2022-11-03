@@ -1,6 +1,6 @@
 import './js/refs';
 import './js/spinner';
-import './js/Movies';
+import './js/movies';
 import './data/genresOfMovies.json';
 import './js/open-modal';
 // import './js/pagination';
