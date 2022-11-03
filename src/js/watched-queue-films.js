@@ -19,6 +19,8 @@ if (!savedWatched || parcedWatchedFilms.length === 0) {
 } else {
   refs.watchedBtn.addEventListener('click', onWatchBtnClick);
 
+  onWatchBtnClick(); // вызов функции чтобы на странице библиотеки сразу показывались фильмы watched
+
   function onWatchBtnClick() {
     try {
       const arr = parcedWatchedFilms.reduce((acc, id) => {
