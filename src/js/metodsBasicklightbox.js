@@ -20,10 +20,12 @@ export default async function openModalOnClick(data) {
     title,
     overview,
   } = await data;
+  console.log(data);
 
   const dataOfTrailer = await getDataTrailerMovie(id);
 
   const hasTrailer = dataOfTrailer.some(element => element.type === 'Trailer');
+  console.log(hasTrailer);
 
   const instance = basicLightbox.create(
     `
@@ -113,19 +115,23 @@ export default async function openModalOnClick(data) {
           closeKeyDownKeyEsc(e, instance)
         );
 
-        btnModalTrailerEl.removeEventListener('click', e =>
-          onModalTrailerMovie(instance)
-        );
+        if (hasTrailer) {
+          btnModalTrailerEl.removeEventListener('click', e =>
+            onModalTrailerMovie(instance)
+          );
+        }
       },
     }
   );
 
   instance.show(initStorageBtns);
 
-  const btnModalTrailerEl = document.querySelector('.js-btn-modal-trailer');
-  btnModalTrailerEl.addEventListener('click', () =>
-    onModalTrailerMovie(instance)
-  );
+  if (hasTrailer) {
+    const btnModalTrailerEl = document.querySelector('.js-btn-modal-trailer');
+    btnModalTrailerEl.addEventListener('click', () =>
+      onModalTrailerMovie(instance)
+    );
+  }
 }
 
 function closeKeyDownKeyEsc(e, instance) {
