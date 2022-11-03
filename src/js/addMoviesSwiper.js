@@ -20,13 +20,13 @@ async function addMoviesSwiper(genresOfMovies) {
 
     const swiper = new Swiper('.swiper', {
       loop: true,
-      speed: 1000,
+      speed: 500,
 
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
+      // autoplay: {
+      //   delay: 5000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: true,
+      // },
 
       slidesPerView: 1,
       spaceBetween: 10,
