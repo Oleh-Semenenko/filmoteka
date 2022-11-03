@@ -183,6 +183,10 @@
   color: var(--quality-text-color);
 }
 
+.film__about {
+  margin-bottom: 20px;
+}
+
 .film__about-title {
   text-transform: uppercase;
   margin: 0;
@@ -191,8 +195,7 @@
 
 .film__about-text {
   overflow-y: auto;
-  line-height: 1.67;
-  margin-bottom: 20px;
+  line-height: 1.67; 
   max-height: 236px;
 
   @include desktop {
