@@ -1,4 +1,4 @@
-import Movies from './Movies';
+import Movies from './movies';
 
 async function getDataTrailerMovie(idMovie) {
   const trailerMovie = new Movies({

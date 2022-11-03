@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import { spinerPlay, spinerStop } from './spinner';
 import { pagination } from './pagination';
-import { movies } from './Movies';
+import { movies } from './movies';
 
 refs.searchFormEl.addEventListener('submit', handleSubmit);
 
@@ -24,7 +24,6 @@ async function handleSubmit(e) {
   spinerPlay();
   try {
     const { results, total_results } = await movies.fetchMovies();
-    console.log(results);
 
     if (total_results === 0) {
       return onSearchResultNotification(

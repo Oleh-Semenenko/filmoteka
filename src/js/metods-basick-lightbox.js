@@ -1,11 +1,11 @@
 const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
-import getDataTrailerMovie from './getDataTrailerMovie';
-import onModalTrailerMovie from './onModalTrailerMovie';
+import getDataTrailerMovie from './get-dta-trailer-movie';
+import onModalTrailerMovie from './on-modal-trailer-movie';
 
-import initStorageBtns from './initStorageBtns';
+import initStorageBtns from './init-storage-btns';
 import svg from '../images/symbol-defs.svg';
-import { showModal, closeModal } from './stopScrolWhenModalOpen';
+import { showModal, closeModal } from './stop-scrol-when-modal-open';
 
 export default async function openModalOnClick(data) {
   const {

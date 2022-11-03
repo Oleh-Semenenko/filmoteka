@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import Movies from './Movies';
-import openModalOnClick from './metodsBasicklightbox';
+import Movies from './movies';
+import openModalOnClick from './metods-basick-lightbox';
 import { refs } from './refs.js';
 
 refs.moviesList.addEventListener('click', openModal);
