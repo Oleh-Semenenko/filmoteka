@@ -94,7 +94,7 @@
   background-position: center;
   background-size: cover;
 
-  // background-image: url(/src/images/poster-placeholder.png);
+  
 
 
 
@@ -186,13 +186,12 @@
 .film__about-title {
   text-transform: uppercase;
   margin: 0;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 .film__about-text {
   overflow-y: auto;
   line-height: 1.67;
-  // margin-bottom: 10px; 
   max-height: 236px;
 
   @include desktop {
@@ -250,61 +249,3 @@
   width: 100%;
 }
 
-// ----------------------------------------------------
-
-// body {
-//     font-size: 1.5em;
-//     justify-content: center;
-//     line-height: 1.5;
-//     margin: 0;
-//     padding: 1em 3em;
-// }
-
-// #text {
-//     max-width: 800px;
-// }
-
-// #show {
-//     position: fixed;
-//     top: 30px;
-//     left: 10px;
-// }
-
-// #show,
-// #close {
-//     background: #da1b60;
-//     border: none;
-//     color: #fff;
-//     display: block;
-//     font-size: 1em;
-//     padding: 1em;
-//     width: 200px;
-// }
-
-// #show:hover,
-// #close:hover {
-//     background: #ff8a00;
-//     cursor: pointer;
-// }
-
-// #dialog {
-//     display: none;
-//     position: fixed;
-//     top: 10vh;
-//     left: 10vw;
-//     width: 80vw;
-//     height: 50vh;
-//     border: 1px solid #eee;
-//     border-radius: 4px;
-//     padding: 10px;
-//     text-align: center;
-//     z-index: 1;
-//     background-color: #444;
-//     color: #fff;
-// }
-
-// #dialog.show {
-//     align-items: center;
-//     display: flex;
-//     flex-direction: column;
-// }
