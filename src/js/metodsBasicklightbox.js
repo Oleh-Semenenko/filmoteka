@@ -38,8 +38,12 @@ export default async function openModalOnClick(data) {
                 ${
                   hasTrailer
                     ? ` <button
-                  type="button"
-                  class="film__button btn__trailer  js-btn-modal-trailer">Watch trailer</button>`
+                  // type="button"
+                  // class="film__button btn__trailer  js-btn-modal-trailer">
+                    <svg class="" width="54" height="54">
+                      <use href="${svg}#icon-play"></use>
+                    </svg>
+                  </button>`
                     : ''
                 }
             </div>

@@ -98,6 +98,7 @@
 
 
 
+
   @include tablet {
     margin-bottom: 0;
     margin-left: 0;
@@ -208,106 +209,24 @@
 }
 
 .film__button {
-  width: 112px;
-  height: 44px;
-  text-align: center;
-  text-transform: uppercase;
-  border-radius: 5px;
   background-color: transparent;
-  cursor: pointer;
-  border: 1px solid #000000;
-  transition: all 300ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
-
-  &:hover {
-    background-color: var(--accent-color);
-    color: var(--header-text-color);
-    border: 1px solid var(--accent-color);
-  }
-
-  @include tablet {
-    width: 125px;
-  }
-
-  @include desktop {
-    width: 136px;
-  }
+  border: none;
 }
 
-.film__button.active {
-  background-color: var(--accent-color);
-  color: var(--header-text-color);
-  border: 1px solid var(--accent-color);
-}
 
-.film__button:not(:last-child) {
-  margin-right: 20px;
-  @include tablet {
-    margin-right: 15px;
-  }
-}
 
 .btn__trailer {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover{
+    opacity: 1.0;
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  }
 }
 
-// ----------------------------------------------------
-
-// body {
-//     font-size: 1.5em;
-//     justify-content: center;
-//     line-height: 1.5;
-//     margin: 0;
-//     padding: 1em 3em;
-// }
-
-// #text {
-//     max-width: 800px;
-// }
-
-// #show {
-//     position: fixed;
-//     top: 30px;
-//     left: 10px;
-// }
-
-// #show,
-// #close {
-//     background: #da1b60;
-//     border: none;
-//     color: #fff;
-//     display: block;
-//     font-size: 1em;
-//     padding: 1em;
-//     width: 200px;
-// }
-
-// #show:hover,
-// #close:hover {
-//     background: #ff8a00;
-//     cursor: pointer;
-// }
-
-// #dialog {
-//     display: none;
-//     position: fixed;
-//     top: 10vh;
-//     left: 10vw;
-//     width: 80vw;
-//     height: 50vh;
-//     border: 1px solid #eee;
-//     border-radius: 4px;
-//     padding: 10px;
-//     text-align: center;
-//     z-index: 1;
-//     background-color: #444;
-//     color: #fff;
-// }
-
-// #dialog.show {
-//     align-items: center;
-//     display: flex;
-//     flex-direction: column;
-// }
