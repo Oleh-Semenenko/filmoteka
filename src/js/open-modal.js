@@ -4,6 +4,7 @@ import openModalOnClick from './metodsBasicklightbox';
 import { refs } from './refs.js';
 
 refs.moviesList.addEventListener('click', openModal);
+refs.swiper.addEventListener('click', openModal);
 
 async function openModal(e) {
   e.preventDefault();
@@ -21,4 +22,3 @@ async function openModal(e) {
     return Notify.failure(error.message);
   }
 }
-

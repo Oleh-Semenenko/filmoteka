@@ -15,10 +15,9 @@ async function addMoviesSwiper(genresOfMovies) {
   spinerPlay();
   try {
     const { results } = await moviesSwiper.fetchMovies();
-    console.log(results);
 
     refs.swiper.innerHTML = moviesSwiper.renderMovieCardSwiper(results);
-    console.log(25252525);
+
     const swiper = new Swiper('.swiper', {
       loop: true,
       speed: 1000,

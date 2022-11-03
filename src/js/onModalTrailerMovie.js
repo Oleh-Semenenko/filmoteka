@@ -2,6 +2,7 @@ const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
 import getDataTrailerMovie from './getDataTrailerMovie';
 import svg from '../images/symbol-defs.svg';
+import { showModal, closeModal } from './stopScrolWhenModalOpen';
 
 const close = `<svg height="30" width="30" class="trailer__svg"><use href="${svg}#icon-close-black"></use></svg>`;
 
@@ -37,20 +38,18 @@ async function onModalTrailerMovie(instance) {
     );
 
     instanceTrailer.show();
+    showModal();
 
     const trailerBtnClose = document.querySelector('.trailer__button-close');
 
     trailerBtnClose.addEventListener('click', () => {
+      closeModal();
       instanceTrailer.close();
       instance.show();
     });
   } catch (error) {
     console.log(error.message);
   }
-}
-
-function onCloseTrailer(instanceTrailer) {
-  instanceTrailer.close();
 }
 
 export default onModalTrailerMovie;
