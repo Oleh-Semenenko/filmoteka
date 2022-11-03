@@ -64,19 +64,14 @@
   }
 
   .movie__list {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: calc(-1 * 32px);
-    margin-left: calc(-1 * 32px);
+    gap: 32px 32px;
   }
 
   .movie__item {
     max-width: 336px;
-    display: flex;
-    flex-basis: calc(100% / 2 - 32px);
-    margin-top: 32px;
-    margin-left: 32px;
 
     &:hover,
     &:focus {
@@ -98,19 +93,13 @@
 
 @include desktop {
   .movie__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: calc(-1 * 32px);
-    margin-left: calc(-1 * 32px);
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 32px 16px;
   }
 
   .movie__item {
     max-width: 395px;
-    display: flex;
-    flex-basis: calc(100% / 3 - 32px);
-    margin-top: 32px;
-    margin-left: 16px;
   }
 
   .movie__image {
@@ -149,6 +138,7 @@
 .storage {
   display: flex;
   justify-content: space-between;
+  margin: 0;
 
   @include tablet {
     justify-content: center;
