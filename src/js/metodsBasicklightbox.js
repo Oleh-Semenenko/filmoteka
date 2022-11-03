@@ -114,12 +114,6 @@ export default async function openModalOnClick(data) {
         document.removeEventListener('keydown', e =>
           closeKeyDownKeyEsc(e, instance)
         );
-
-        if (hasTrailer) {
-          btnModalTrailerEl.removeEventListener('click', e =>
-            onModalTrailerMovie(instance)
-          );
-        }
       },
     }
   );
