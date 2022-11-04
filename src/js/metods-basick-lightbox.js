@@ -121,11 +121,13 @@ export default async function openModalOnClick(data) {
     {
       onShow: instance => {
         showModal();
-        document.addEventListener('keydown', e =>
+        document.addEventListener('keydown', e => {
           closeKeyDownKeyEsc(e, instance)
-        );
+        });
         const closeBtn = instance.element().querySelector('.modal__close-btn');
-        closeBtn.addEventListener('click', e => instance.close());
+        closeBtn.addEventListener('click', e => 
+          instance.close()
+        );
       },
       onClose: instance => {
         closeModal();
@@ -151,3 +153,6 @@ function closeKeyDownKeyEsc(e, instance) {
     instance.close();
   }
 }
+
+
+

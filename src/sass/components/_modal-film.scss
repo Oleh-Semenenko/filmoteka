@@ -8,7 +8,7 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   max-width: 480px;
-  max-height: 940px;
+  max-height: 600px;
 
   background-color: var(--background-color);
   font-family: Roboto, sans-serif;
@@ -220,7 +220,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
+  opacity: 0.3;
   transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover{
