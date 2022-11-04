@@ -5,6 +5,7 @@ import onModalTrailerMovie from './on-modal-trailer-movie';
 
 import initStorageBtns from './init-storage-btns';
 import svg from '../images/symbol-defs.svg';
+import imgCard from '../images/poster-placeholder.png';
 import { showModal, closeModal } from './stop-scrol-when-modal-open';
 
 export default async function openModalOnClick(data) {
@@ -34,7 +35,22 @@ export default async function openModalOnClick(data) {
             </svg>
           </button>
           <div class="film__image">
-              <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title}" data-movieid="${id}"/>
+          ${
+            poster_path
+              ? `<img
+                class="image"
+                src="https://image.tmdb.org/t/p/w342${poster_path}"
+                alt="${title}"
+                data-movieid="${id}"
+              />`
+              : `<img
+                class="image"
+                src="${imgCard}"
+                alt="${title}"
+                data-movieid="${id}"
+              />`
+          }
+              
                 ${
                   hasTrailer
                     ? ` <button
@@ -105,11 +121,13 @@ export default async function openModalOnClick(data) {
     {
       onShow: instance => {
         showModal();
-        document.addEventListener('keydown', e =>
+        document.addEventListener('keydown', e => {
           closeKeyDownKeyEsc(e, instance)
-        );
+        });
         const closeBtn = instance.element().querySelector('.modal__close-btn');
-        closeBtn.addEventListener('click', e => instance.close());
+        closeBtn.addEventListener('click', e => 
+          instance.close()
+        );
       },
       onClose: instance => {
         closeModal();
@@ -135,3 +153,6 @@ function closeKeyDownKeyEsc(e, instance) {
     instance.close();
   }
 }
+
+
+

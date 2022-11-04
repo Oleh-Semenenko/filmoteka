@@ -13,4 +13,5 @@ export const refs = {
   body: document.querySelector('body'),
   searchNotification: document.querySelector('#search-notification'),
   disabledNotification: document.querySelector('.disabled-notification'),
+  teamList: document.querySelector('[data-modal-open]'),
 };

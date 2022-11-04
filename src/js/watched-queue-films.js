@@ -8,6 +8,7 @@ import {
   addClassActiveOnQueueBtn,
   removeClassActiveOnWatchedBtn,
 } from './utils';
+import imgCard from '../images/poster-placeholder.png';
 
 const films = new Movies({
   url: 'https://api.themoviedb.org/3/movie',
@@ -111,7 +112,18 @@ function renderMovie(movies) {
         return `
       <li class="movie__item" data-id="${id}">
   <a class="movie__link" data-id="${id}" href="">
-  <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height="" />
+   ${
+     poster_path
+       ? `<img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height=""/>`
+       : `<img
+       src="${imgCard}"
+        class="movie__image"
+        data-id="${id}"
+        alt="Poster movie ${original_title}"
+        width=""
+        height=""
+      />`
+   }
     <div class="movie__description" data-id="${id}">
       <p class="movie__title" data-id="${id}">${original_title}</p>
       <p class="movie__info" data-id="${id}">${genres
