@@ -203,3 +203,20 @@
     font-size: 25px;
   }
 }
+
+.header__item-btn:disabled {
+  background-color: grey;
+  border: none;
+}
+
+.header__item-btn--active:disabled {
+  background-color: grey !important;
+}
+
+.disabled-notification {
+  text-align: center;
+}
+
+.movies-is-true{
+  display: none;
+}
