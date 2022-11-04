@@ -9,3 +9,4 @@ import './js/pagination';
 import './js/button-up';
 import './js/pagination';
 import './js/button-up';
+import './js/team-modal';
