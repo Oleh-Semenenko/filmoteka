@@ -1,5 +1,6 @@
 import axios from 'axios';
 import genresOfMovies from '../data/genresOfMovies.json';
+import imgCard from '../images/poster-placeholder.png';
 
 class Movies {
   constructor({ url, params: { api_key, page, query } }) {
@@ -87,7 +88,19 @@ class Movies {
         return `
       <li class="movie__item" data-id="${id}">
   <a class="movie__link" data-id="${id}" href="">
-  <img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height="" />
+  ${
+    poster_path
+      ? `<img src="https://image.tmdb.org/t/p/w342${poster_path}" class="movie__image" data-id="${id}" alt="Poster movie ${original_title}"  width="" height=""/>`
+      : `<img
+       src="${imgCard}"
+        class="movie__image"
+        data-id="${id}"
+        alt="Poster movie ${original_title}"
+        width=""
+        height=""
+      />`
+  }
+  
     <div class="movie__description" data-id="${id}">
       <p class="movie__title" data-id="${id}">${original_title}</p>
       <p class="movie__info" data-id="${id}">${genres}  

@@ -4,7 +4,7 @@ import '../../node_modules/swiper/swiper-bundle.css';
 import { refs } from './refs';
 
 import { spinerPlay, spinerStop } from './spinner';
-import Movies from './Movies';
+import Movies from './movies';
 
 const moviesSwiper = new Movies({
   url: 'https://api.themoviedb.org/3/trending/movie/day',
@@ -20,13 +20,13 @@ async function addMoviesSwiper(genresOfMovies) {
 
     const swiper = new Swiper('.swiper', {
       loop: true,
-      speed: 1000,
+      speed: 500,
 
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
+      // autoplay: {
+      //   delay: 5000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: true,
+      // },
 
       slidesPerView: 1,
       spaceBetween: 10,

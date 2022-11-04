@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
+    <link rel="shortcut icon" href="./images/icon-film.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,16 +16,15 @@
 
   <body>
     <include src="./partials/library.html"></include>
+    <include src="./partials/spinner.html"></include>
 
     <main>
       <include src="./partials/library-gallery.html"></include>
       <include src="./partials/pages.html"></include>
     </main>
-
+    <include src="./partials/pagination.html"></include>
     <include src="./partials/footer.html"></include>
 
-    <script type="module" src="./js/header.js"></script>
-    <script type="module" src="./js/watched-queue-films.js"></script>
-    <script type="module" src="./js/library-start-render.js"></script>
+    <script type="module" src="./library.js"></script>
   </body>
 </html>

@@ -1,14 +1,16 @@
 import Pagination from 'tui-pagination';
-import renderMarkupStartMoviesList from './renderMarkupStartMoviesList';
+import renderMarkupStartMoviesList from './render-markup-start-movies-list';
 import { refs } from './refs';
-import { movies } from './Movies';
+import { movies } from './movies';
 import svg from '../images/symbol-defs.svg';
+
+const LOCALSTORAGE_KEY = 'current-page';
 
 const arrowLeft = `<svg height="16" width="16"><use href="${svg}#icon-arrow-left"></use></svg>`;
 const arrowRight = `<svg height="16" width="16"><use href="${svg}#icon-arrow-right"></use></svg>`;
 
 const options = {
-  totalItems: 1000,
+  totalItems: 20000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -68,8 +70,6 @@ pagination.on('beforeMove', event => {
 
   fetchData(currentPage);
 });
-
-const LOCALSTORAGE_KEY = 'current-page';
 
 const localStorageCurrentPage = localStorage.getItem(LOCALSTORAGE_KEY);
 

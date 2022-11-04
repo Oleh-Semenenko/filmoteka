@@ -1,11 +1,12 @@
 const basicLightbox = require('basiclightbox');
 import * as basicLightbox from 'basiclightbox';
-import getDataTrailerMovie from './getDataTrailerMovie';
-import onModalTrailerMovie from './onModalTrailerMovie';
+import getDataTrailerMovie from './get-dta-trailer-movie';
+import onModalTrailerMovie from './on-modal-trailer-movie';
 
-import initStorageBtns from './initStorageBtns';
+import initStorageBtns from './init-storage-btns';
 import svg from '../images/symbol-defs.svg';
-import { showModal, closeModal } from './stopScrolWhenModalOpen';
+import imgCard from '../images/poster-placeholder.png';
+import { showModal, closeModal } from './stop-scrol-when-modal-open';
 
 export default async function openModalOnClick(data) {
   const {
@@ -34,12 +35,31 @@ export default async function openModalOnClick(data) {
             </svg>
           </button>
           <div class="film__image">
-              <img class="image" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title}" data-movieid="${id}"/>
+          ${
+            poster_path
+              ? `<img
+                class="image"
+                src="https://image.tmdb.org/t/p/w342${poster_path}"
+                alt="${title}"
+                data-movieid="${id}"
+              />`
+              : `<img
+                class="image"
+                src="${imgCard}"
+                alt="${title}"
+                data-movieid="${id}"
+              />`
+          }
+              
                 ${
                   hasTrailer
                     ? ` <button
-                  type="button"
-                  class="film__button btn__trailer  js-btn-modal-trailer">Watch trailer</button>`
+                  // type="button"
+                  // class="film__button btn__trailer  js-btn-modal-trailer">
+                    <svg class="" width="54" height="54">
+                      <use href="${svg}#icon-play"></use>
+                    </svg>
+                  </button>`
                     : ''
                 }
             </div>

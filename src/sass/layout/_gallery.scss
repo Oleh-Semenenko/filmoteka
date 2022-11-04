@@ -64,19 +64,14 @@
   }
 
   .movie__list {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: calc(-1 * 32px);
-    margin-left: calc(-1 * 32px);
+    gap: 32px 32px;
   }
 
   .movie__item {
     max-width: 336px;
-    display: flex;
-    flex-basis: calc(100% / 2 - 32px);
-    margin-top: 32px;
-    margin-left: 32px;
 
     &:hover,
     &:focus {
@@ -98,19 +93,13 @@
 
 @include desktop {
   .movie__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: calc(-1 * 32px);
-    margin-left: calc(-1 * 32px);
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 32px 16px;
   }
 
   .movie__item {
     max-width: 395px;
-    display: flex;
-    flex-basis: calc(100% / 3 - 32px);
-    margin-top: 32px;
-    margin-left: 16px;
   }
 
   .movie__image {
@@ -136,19 +125,10 @@
   }
 }
 
-.background-lib {
-  // background-image: url(/src/images/poster-placeholder.png);
-  background-color: var(--background-color);
-  width: 100%;
-
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 .storage {
   display: flex;
   justify-content: space-between;
+  margin: 0;
 
   @include tablet {
     justify-content: center;
@@ -156,7 +136,7 @@
 }
 
 .storage__item:first-child {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .storage__btn {
