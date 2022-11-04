@@ -3,7 +3,7 @@ import * as basicLightbox from 'basiclightbox';
 
 import * as images from './team-images-import';
 import svg from '../images/symbol-defs.svg';
-import { showModal, closeModal } from './stopScrolWhenModalOpen';
+import { showModal, closeModal } from './stop-scrol-when-modal-open';
 
 export default async function openTeamModalOnClick() {
 
