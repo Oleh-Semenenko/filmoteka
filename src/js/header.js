@@ -2,7 +2,6 @@ import { refs } from './refs';
 
 const { headerBtn, queueBtn, watchedBtn } = refs;
 
-
 headerBtn.addEventListener('click', changeActiveHeaderBtn);
 
 function changeActiveHeaderBtn(e) {
@@ -20,4 +19,3 @@ function choseActiveEl(activate, deactivate, condition) {
   activate.classList.add(condition);
   deactivate.classList.remove(condition);
 }
-

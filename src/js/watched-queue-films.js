@@ -1,5 +1,13 @@
 import { refs } from './refs';
 import Movies from './movies';
+import {
+  addClassIsHidden,
+  removeClassIsHidden,
+  queueBtnDisabledTrue,
+  watchedBtnDisabledTrue,
+  addClassActiveOnQueueBtn,
+  removeClassActiveOnWatchedBtn,
+} from './utils';
 import imgCard from '../images/poster-placeholder.png';
 
 const films = new Movies({
@@ -15,58 +23,79 @@ const parcedWatchedFilms = JSON.parse(savedWatched);
 const savedQueue = localStorage.getItem('Queue');
 const parcedQueueFilms = JSON.parse(savedQueue);
 
-if (!savedWatched || parcedWatchedFilms.length === 0) {
-  return;
+if (savedQueue === null && savedWatched === null) {
+  queueBtnDisabledTrue();
+  watchedBtnDisabledTrue();
+  removeClassIsHidden();
+} else if (savedWatched === null) {
+  watchedBtnDisabledTrue();
+  removeClassActiveOnWatchedBtn();
+  removeClassIsHidden();
 } else {
-  refs.watchedBtn.addEventListener('click', onWatchBtnClick);
+  addClassIsHidden();
+}
 
-  onWatchBtnClick(); // вызов функции чтобы на странице библиотеки сразу показывались фильмы watched
+if (savedWatched === null) {
+  addClassActiveOnQueueBtn();
+  return onQueueBtnClick();
+}
 
-  function onWatchBtnClick() {
-    try {
-      const arr = parcedWatchedFilms.reduce((acc, id) => {
-        films.url = `https://api.themoviedb.org/3/movie/${id}`;
-        const result = films.fetchMovies();
-        acc.push(result);
-        return acc;
-      }, []);
+refs.watchedBtn.addEventListener('click', onWatchBtnClick);
+onWatchBtnClick(); // вызов функции чтобы на странице библиотеки сразу показывались фильмы watched
 
-      Promise.all(arr)
-        .then(value => {
-          refs.moviesList.innerHTML = renderMovie(value);
-        })
-        .catch(error => console.log(error));
-    } catch (error) {
-      console.log(error);
-    }
+function onWatchBtnClick() {
+  try {
+    const arr = parcedWatchedFilms.reduce((acc, id) => {
+      films.url = `https://api.themoviedb.org/3/movie/${id}`;
+      const result = films.fetchMovies();
+      acc.push(result);
+      return acc;
+    }, []);
+
+    Promise.all(arr)
+      .then(value => {
+        isSendToTheLibrary(value);
+      })
+      .catch(error => console.log(error));
+  } catch (error) {
+    console.log(error);
   }
 }
 
 export default onWatchBtnClick;
 
-if (!savedQueue || parcedWatchedFilms.length === 0) {
-  return;
-} else {
-  refs.queueBtn.addEventListener('click', onQueueBtnClick);
+if (savedQueue === null) {
+  queueBtnDisabledTrue();
+  return removeClassIsHidden();
+}
 
-  function onQueueBtnClick() {
-    try {
-      const arr = parcedQueueFilms.reduce((acc, id) => {
-        films.url = `https://api.themoviedb.org/3/movie/${id}`;
-        const result = films.fetchMovies();
-        acc.push(result);
-        return acc;
-      }, []);
+addClassIsHidden();
+refs.queueBtn.addEventListener('click', onQueueBtnClick);
 
-      Promise.all(arr)
-        .then(value => {
-          refs.moviesList.innerHTML = renderMovie(value);
-        })
-        .catch(error => console.log(error));
-    } catch (error) {
-      console.log(error);
-    }
-  }
+function onQueueBtnClick() {
+  try {
+    const arr = parcedQueueFilms.reduce((acc, id) => {
+      films.url = `https://api.themoviedb.org/3/movie/${id}`;
+      const result = films.fetchMovies();
+      acc.push(result);
+      return acc;
+    }, []);
+
+    Promise.all(arr)
+      .then(value => {
+        isSendToTheLibrary(value);
+      })
+      .catch(error => console.log(error));
+  } catch (error) {}
+}
+
+function isSendToTheLibrary(value) {
+  const isLibraryEmpty = document.querySelector('.message-wrap');
+  value.length === 0
+    ? isLibraryEmpty.classList.remove('movies-is-true')
+    : isLibraryEmpty.classList.add('movies-is-true');
+
+  refs.moviesList.innerHTML = renderMovie(value);
 }
 
 function renderMovie(movies) {
@@ -80,7 +109,6 @@ function renderMovie(movies) {
         id,
         vote_average,
       }) => {
-        console.log(genres);
         return `
       <li class="movie__item" data-id="${id}">
   <a class="movie__link" data-id="${id}" href="">
@@ -105,9 +133,9 @@ function renderMovie(movies) {
     <span class="movie__year" data-id="${id}">${release_date
           .split('-')
           .slice(0, 1)
-          .join(
-            ''
-          )}</span><span class="movie__rating">${vote_average}</span></p>
+          .join('')}</span><span class="movie__rating">${vote_average.toFixed(
+          1
+        )}</span></p>
     </div>
   </a>
 </li>`;
