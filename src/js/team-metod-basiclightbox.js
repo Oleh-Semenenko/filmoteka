@@ -1,37 +1,42 @@
-<div class="backdrop is-hidden" data-modal>
-  <div class="team-modal">
-    <button type="button" class="close-btn">
-      <svg class="icon-btn-close" width="18" height="18">
-        <use href="./images/symbol-defs.svg#icon-close-black"></use>
-      </svg>
+const basicLightbox = require('basiclightbox');
+import * as basicLightbox from 'basiclightbox';
+
+import * as images from './team-images-import';
+import svg from '../images/symbol-defs.svg';
+import { showModal, closeModal } from './stopScrolWhenModalOpen';
+
+export default async function openTeamModalOnClick() {
+
+  const teamMarkup = basicLightbox.create(
+    `<div class="team-modal modal">
+    <button type="button" class="modal__close-btn">
+            <svg class="modal__icon" width="14" height="14">
+                <use href="${svg}#icon-close-black"></use>
+            </svg>
     </button>
-    <!-- Modal -->
     <ul class="team-list list">
       <li class="team-item">
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/oleh-desk-1x-min.jpg 1x,
-              ./images/team/oleh-desk-2x-min.jpg 2x
+              ${images.img_oleh_desk_1x} 1x, ${images.img_oleh_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/oleh-tab-1x-min.jpg 1x,
-              ./images/team/oleh-tab-2x-min.jpg 2x
+              ${images.img_oleh_tab_1x} 1x, ${images.img_oleh_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/oleh-mob-1x-min.jpg 1x,
-              ./images/team/oleh-mob-2x-min.jpg 2x
+              ${images.img_oleh_mob_1x} 1x, ${images.img_oleh_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/oleh-desk-1x-min.jpg"
+            src="${images.img_oleh_desk_1x}"
             alt="Олег Семененко"
             class="team-img"
             width="290"
@@ -44,27 +49,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/eugen-desk-1x-min.jpg 1x,
-              ./images/team/eugen-desk-2x-min.jpg 2x
+              ${images.img_eugen_desk_1x} 1x, ${images.img_eugen_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/eugen-tab-1x-min.jpg 1x,
-              ./images/team/eugen-tab-2x-min.jpg 2x
+              ${images.img_eugen_tab_1x} 1x, ${images.img_eugen_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/eugen-mob-1x-min.jpg 1x,
-              ./images/team/eugen-mob-2x-min.jpg 2x
+              ${images.img_eugen_mob_1x} 1x, ${images.img_eugen_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/eugen-desk-1x-min.jpg"
+            src="${images.img_eugen_desk_1x}"
             alt="Євген Сидоров"
             class="team-img"
             width="290"
@@ -77,27 +79,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/ivan-desk-1x-min.jpg 1x,
-              ./images/team/ivan-desk-2x-min.jpg 2x
+              ${images.img_ivan_desk_1x} 1x, ${images.img_ivan_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/ivan-tab-1x-min.jpg 1x,
-              ./images/team/ivan-tab-2x-min.jpg 1x
+              ${images.img_ivan_tab_1x} 1x, ${images.img_ivan_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/ivan-mob-1x-min.jpg 1x,
-              ./images/team/ivan-mob-2x-min.jpg 2x
+              ${images.img_ivan_mob_1x} 1x, ${images.img_ivan_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/ivan-desk-1x-min.jpg"
+            src="${images.img_ivan_desk_1x}"
             alt="Іван Довгопол"
             class="team-img"
             width="290"
@@ -110,27 +109,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/olga-desk-1x-min.jpg 1x,
-              ./images/team/olga-desk-2x-min.jpg 2x
+              ${images.img_olga_desk_1x} 1x, ${images.img_olga_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/olga-tab-1x-min.jpg 1x,
-              ./images/team/olga-tab-2x-min.jpg 2x
+              ${images.img_olga_tab_1x} 1x, ${images.img_olga_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/olga-mob-1x-min.jpg 1x,
-              ./images/team/olga-mob-2x-min.jpg 2x
+              ${images.img_olga_mob_1x} 1x, ${images.img_olga_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/olga-desk-1x-min.jpg"
+            src="${images.img_olga_desk_1x}"
             alt="Ольга Громова"
             class="team-img"
             width="290"
@@ -143,27 +139,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/vadim-desk-1x-min.jpg 1x,
-              ./images/team/vadim-desk-2x-min.jpg 2x
+              ${images.img_vadim_desk_1x} 1x, ${images.img_vadim_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/vadim-tab-1x-min.jpg 1x,
-              ./images/team/vadim-tab-2x-min.jpg 2x
+              ${images.img_vadim_tab_1x} 1x, ${images.img_vadim_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/vadim-mob-1x-min.jpg 1x,
-              ./images/team/vadim-mob-2x-min.jpg 2x
+              ${images.img_vadim_mob_1x} 1x, ${images.img_vadim_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/vadim-desk-1x-min.jpg"
+            src="${images.img_vadim_desk_1x}"
             alt="Вадим Чутур"
             class="team-img"
             width="290"
@@ -176,27 +169,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/dmytro_s-desk-1x-min.jpg 1x,
-              ./images/team/dmytro_s-desk-2x-min.jpg 2x
+              ${images.img_dmytro_s_desk_1x} 1x, ${images.img_dmytro_s_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/dmytro_s-tab-1x-min.jpg 1x,
-              ./images/team/dmytro_s-tab-2x-min.jpg 2x
+              ${images.img_dmytro_s_tab_1x} 1x, ${images.img_dmytro_s_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/dmytro_s-mob-1x-min.jpg 1x,
-              ./images/team/dmytro_s-mob-2x-min.jpg 2x
+              ${images.img_dmytro_s_mob_1x} 1x, ${images.img_dmytro_s_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/dmytro_s-desk-1x-min.jpg"
+            src="${images.img_dmytro_s_desk_1x}"
             alt="Дмитро Садковський"
             class="team-img"
             width="290"
@@ -209,27 +199,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/iryna-desk-1x-min.jpg 1x,
-              ./images/team/iryna-desk-2x-min.jpg 2x
+              ${images.img_iryna_desk_1x} 1x, ${images.img_iryna_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/iryna-tab-1x-min.jpg 1x,
-              ./images/team/iryna-tab-2x-min.jpg 2x
+              ${images.img_iryna_tab_1x} 1x, ${images.img_iryna_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/iryna-mob-1x-min.jpg 1x,
-              ./images/team/iryna-mob-2x-min.jpg 2x
+              ${images.img_iryna_mob_1x} 1x, ${images.img_iryna_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/iryna-desk-1x-min.jpg"
+            src="${images.img_iryna_desk_1x}"
             alt="Ірина Бондаренко"
             class="team-img"
             width="290"
@@ -242,27 +229,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/dmytro_p-desk-1x-min.jpg 1x,
-              ./images/team/dmytro_p-desk-2x-min.jpg 2x
+              ${images.img_dmytro_p_desk_1x} 1x, ${images.img_dmytro_p_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/dmytro_p-tab-1x-min.jpg 1x,
-              ./images/team/dmytro_p-tab-2x-min.jpg 2x
+              ${images.img_dmytro_p_tab_1x} 1x, ${images.img_dmytro_p_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/dmytro_p-mob-1x-min.jpg 1x,
-              ./images/team/dmytro_p-mob-2x-min.jpg 2x
+              ${images.img_dmytro_p_mob_1x} 1x, ${images.img_dmytro_p_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/dmytro_p-desk-1x-min.jpg"
+            src="${images.img_dmytro_p_desk_1x}"
             alt="Дмитро Пушкаренко"
             class="team-img"
             width="290"
@@ -275,27 +259,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/oleksandr-desk-1x-min.jpg 1x,
-              ./images/team/oleksandr-desk-2x-min.jpg 2x
+              ${images.img_oleksandr_desk_1x} 1x, ${images.img_oleksandr_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/oleksandr-tab-1x-min.jpg 1x,
-              ./images/team/oleksandr-tab-2x-min.jpg 2x
+              ${images.img_oleksandr_tab_1x} 1x, ${images.img_oleksandr_tab_2x} 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/oleksandr-mob-1x-min.jpg 1x,
-              ./images/team/oleksandr-mob-2x-min.jpg 2x
+              ${images.img_oleksandr_mob_1x} 1x, ${images.img_oleksandr_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/oleksandr-desk-1x-min.jpg"
+            src="${images.img_oleksandr_desk_1x}"
             alt="Олександр Костан"
             class="team-img"
             width="290"
@@ -308,24 +289,22 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/andriy-desk-1x-min.jpg 1x,
-              ./images/team/andriy-desk-2x-min.jpg 2x
+              ${images.img_andriy_desk_1x} 1x, ${images.img_andriy_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
-            srcset="./images/team/andriy-tab-1x-min.jpg 1x, ./images/team/andriy-tab-2x-min.jpg x"
+            ${images.img_andriy_tab_1x} 1x, ${images.img_andriy_tab_2x} 2x"
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/andriy-mob-1x-min.jpg 1x,
-              ./images/team/andriy-mob-2x-min.jpg 2x
+              ${images.img_andriy_mob_1x} 1x, ${images.img_andriy_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/andriy-desk-1x-min.jpg"
+            src="${images.img_andriy_desk_1x}"
             alt="Андрій Юрченко"
             class="team-img"
             width="290"
@@ -338,27 +317,24 @@
         <picture class="team-picture">
           <source
             srcset="
-              ./images/team/vlad-desk-1x-min.jpg 1x,
-              ./images/team/vlad-desk-2x-min.jpg 2x
+              ${images.img_vlad_desk_1x} 1x, ${images.img_vlad_desk_2x} 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
-              ./images/team/vlad-tab-1x-min.jpg 1x,
-              ./images/team/vlad-tab-2x-min.jpg 2x
+              ${images.img_vlad_tab_1x} 1x, ${images.img_vlad_tab_2x} 2x"
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
-              ./images/team/vlad-mob-1x-min.jpg 1x,
-              ./images/team/vlad-mob-2x-min.jpg 2x
+              ${images.img_vlad_mob_1x} 1x, ${images.img_vlad_mob_2x} 2x
             "
             media="(min-width: 320px)"
           />
           <img
-            src="./images/team/vlad-desk-1x-min.jpg"
+            src="${images.img_vlad_desk_1x}"
             alt="Владислав Федченко"
             class="team-img"
             width="290"
@@ -368,5 +344,30 @@
         </picture>
       </li>
     </ul>
-  </div>
-</div>
+    </div>`,
+    {
+      onShow: teamMarkup => {
+        showModal();
+        document.addEventListener('keydown', e =>
+          closeKeyDownKeyEsc(e, teamMarkup)
+        );
+        const closeBtn = teamMarkup.element().querySelector('.modal__close-btn');
+        closeBtn.addEventListener('click', e => teamMarkup.close());
+      },
+      onClose: teamMarkup => {
+        closeModal();
+        document.removeEventListener('keydown', e =>
+          closeKeyDownKeyEsc(e, teamMarkup)
+        );
+      },
+    }
+  );
+  console.log(teamMarkup);
+  teamMarkup.show();
+}
+
+function closeKeyDownKeyEsc(e, teamMarkup) {
+  if (e.code === 'Escape') {
+    teamMarkup.close();
+  }
+}

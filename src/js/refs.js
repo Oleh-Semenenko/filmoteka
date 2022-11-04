@@ -12,4 +12,5 @@ export const refs = {
   headerNav: document.querySelector('.header__nav'),
   body: document.querySelector('body'),
   searchNotification: document.querySelector('#search-notification'),
+  teamList: document.querySelector('[data-modal-open]'),
 };
