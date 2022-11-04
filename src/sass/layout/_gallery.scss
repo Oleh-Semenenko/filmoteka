@@ -125,16 +125,6 @@
   }
 }
 
-.background-lib {
-  // background-image: url(/src/images/poster-placeholder.png);
-  background-color: var(--background-color);
-  width: 100%;
-
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 .storage {
   display: flex;
   justify-content: space-between;
@@ -146,7 +136,7 @@
 }
 
 .storage__item:first-child {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .storage__btn {
